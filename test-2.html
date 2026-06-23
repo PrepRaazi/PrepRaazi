@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        .question { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #ddd; }
+        .options label { display: block; }
+        .submit-btn { margin-top: 20px; padding: 10px; background: blue; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 20px; padding: 10px; border: 1px solid black; display: none; }
+        .solution { display: none; margin-top: 10px; padding: 10px; background: #f8f8f8; border-left: 4px solid green; }
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="testTitle">GATE Test</h2>
+        <form id="gateTestForm">
+            <div id="questionsContainer"></div>
+            <button type="button" class="submit-btn" onclick="calculateScore()">Submit</button>
+        </form>
+        <div class="result" id="resultBox"></div>
+    </div>
+
+    <script>
+        // Function to get test number from URL
+        function getTestNumber() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("test") || "1"; // Default to test 1
+        }
+
+        // Define questions for different tests
+        const allTests = {
+            "1": [
+                 { "q": "A steel rod of diameter 20 mm and length 2 m is subjected to an axial tensile load of 50 kN. If the modulus of elasticity of steel is 200 GPa, the elongation of the rod is:", "options": ["0.5 mm", "1.0 mm", "1.5 mm", "2.0 mm"], "answer": 1, "solution": "Elongation = (PL) / (AE). Substituting values gives 1.0 mm." },
+  { "q": "A simply supported beam of length 4 m carries a uniformly distributed load of 10 kN/m over its entire length. If the section modulus of the beam is 500 × 10³ mm³, the maximum bending stress is:", "options": ["40 MPa", "60 MPa", "80 MPa", "100 MPa"], "answer": 2, "solution": "Maximum bending moment = (wL²) / 8, and Bending stress = M/Z. Substituting values gives 80 MPa." },
+  { "q": "A solid circular shaft of diameter 50 mm is subjected to a torque of 1 kN·m. If the shear modulus of the material is 80 GPa, the angle of twist per unit length is:", "options": ["0.01 rad/m", "0.02 rad/m", "0.03 rad/m", "0.04 rad/m"], "answer": 1, "solution": "Angle of twist = (T*L) / (J*G). Substituting values gives 0.01 rad/m." },
+  { "q": "A cylindrical vessel with an internal diameter of 1 m and a wall thickness of 10 mm is subjected to an internal pressure of 2 MPa. The maximum hoop stress is:", "options": ["50 MPa", "100 MPa", "150 MPa", "200 MPa"], "answer": 1, "solution": "Hoop stress = (p*d) / (2*t). Substituting values gives 100 MPa." },
+  { "q": "A cantilever beam of length 3 m carries a point load of 10 kN at its free end. If the flexural rigidity EI = 10⁶ kN·m², the deflection at the free end is:", "options": ["10 mm", "20 mm", "30 mm", "40 mm"], "answer": 1, "solution": "Deflection = (P*L³) / (3*EI). Substituting values gives 10 mm." },
+  { "q": "For a simply supported beam of length 6 m carrying a point load of 15 kN at 2 m from the left support, the maximum bending moment is:", "options": ["15 kN·m", "20 kN·m", "25 kN·m", "30 kN·m"], "answer": 2, "solution": "Using moment equation, max moment occurs at the load location, calculated as 25 kN·m." },
+  { "q": "At a point in a stressed body, the normal stresses on two perpendicular planes are 60 MPa (tensile) and 40 MPa (compressive), and the shear stress is 20 MPa. The maximum principal stress is:", "options": ["62.1 MPa", "64.1 MPa", "66.1 MPa", "68.1 MPa"], "answer": 1, "solution": "Using principal stress formula, the max principal stress is 62.1 MPa." },
+  { "q": "A thin cylindrical shell of diameter 1.5 m and thickness 8 mm is subjected to an internal pressure of 1.5 MPa. The longitudinal stress is:", "options": ["28.125 MPa", "56.25 MPa", "112.5 MPa", "225 MPa"], "answer": 2, "solution": "Longitudinal stress = (p*d) / (4*t). Substituting values gives 56.25 MPa." },
+  { "q": "A bar of cross-sectional area 500 mm² and length 1 m is subjected to an axial load of 50 kN. If the modulus of elasticity is 200 GPa, the strain energy stored in the bar is:", "options": ["12.5 J", "25 J", "50 J", "100 J"], "answer": 1, "solution": "Strain energy = (P²L) / (2AE). Substituting values gives 12.5 J." },
+  { "q": "A steel column of length 4 m and moment of inertia 10⁶ mm⁴ is fixed at both ends. If the modulus of elasticity is 200 GPa, the Euler buckling load is:", "options": ["123.4 kN", "246.8 kN", "493.6 kN", "987.2 kN"], "answer": 2, "solution": "Using Euler’s buckling formula, the buckling load is 246.8 kN." },
+  { "q": "The degree of static indeterminacy of a two-hinged parabolic arch is:", "options": ["0", "1", "2", "3"], "answer": 0, "solution": "Two-hinged arches have zero static indeterminacy as they are determinate structures." },
+  { "q": "For a fixed beam of span L subjected to a uniformly distributed load w, the fixed end moment at one end is:", "options": ["wL²/12", "wL²/24", "wL²/8", "wL²/16"], "answer": 2, "solution": "Fixed end moment formula gives wL²/8 for a fixed beam with UDL." },
+  { "q": "The influence line diagram for the bending moment at a section of a simply supported beam is:", "options": ["A triangle with maximum ordinate at the section", "A rectangle", "A parabola", "A straight line"], "answer": 0, "solution": "Influence line for BM in a simply supported beam is a triangle with peak at section." },
+  { "q": "The deflection at the free end of a cantilever beam of length L subjected to a uniformly distributed load w is:", "options": ["wL⁴/8EI", "wL⁴/16EI", "wL⁴/24EI", "wL⁴/48EI"], "answer": 3, "solution": "Deflection = wL⁴/8EI for cantilever under UDL." },
+  { "q": "The shear strength of a soil is given by τ = c + σ tan φ. If c = 10 kPa and φ = 30°, the shear strength at a normal stress of 50 kPa is:", "options": ["30 kPa", "35 kPa", "40 kPa", "45 kPa"], "answer": 1, "solution": "Shear strength = 10 + (50 tan30°) = 35 kPa." }
+
+			],
+            "2": [
+                { q: "In a fluid mechanics test, a venturimeter is used to measure flow rate. If the inlet diameter is 200 mm and throat diameter is 100 mm, and the pressure difference is 10 kPa, the flow rate is approximately:", options: ["0.1 m³/s", "0.2 m³/s", "0.3 m³/s", "0.4 m³/s"], answer: 1, solution: "Using Bernoulli's equation, the flow rate is approximately 0.2 m³/s." },
+                { q: "A reservoir has a uniform seepage rate of 0.005 m/day. If the permeability of the soil is 1 × 10⁻⁶ m/s, the hydraulic gradient is:", options: ["2", "5", "10", "20"], answer: 2, solution: "Hydraulic gradient = Seepage rate / Permeability. The answer is 10." }
+            ]
+        };
+
+        const testNumber = getTestNumber();
+        const questions = allTests[testNumber] || allTests["1"]; // Default to Test 1 if not found
+
+        document.getElementById("testTitle").innerText = `GATE Test ${testNumber}`;
+
+        const questionsContainer = document.getElementById("questionsContainer");
+        questions.forEach((item, index) => {
+            let questionHTML = `<div class='question' id='q${index}'>
+                <p><strong>Q${index + 1}:</strong> ${item.q}</p>
+                <div class='options'>`;
+            item.options.forEach((option, optIndex) => {
+                questionHTML += `<label><input type='radio' name='q${index}' value='${optIndex}'> ${option}</label>`;
+            });
+            questionHTML += `</div>
+                <div class="solution" id="sol${index}">
+                    <p><strong>Correct Answer:</strong> <span class="correct">${item.options[item.answer]}</span></p>
+                    <p><strong>Solution:</strong> ${item.solution}</p>
+                </div>
+            </div>`;
+            questionsContainer.innerHTML += questionHTML;
+        });
+
+        function calculateScore() {
+            let score = 0;
+            let attempted = 0;
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            questions.forEach((item, index) => {
+                let selected = document.querySelector(`input[name='q${index}']:checked`);
+                if (!selected) {
+                    unattempted++;
+                } else {
+                    attempted++;
+                    if (parseInt(selected.value) === item.answer) {
+                        correct++;
+                        score += 2;
+                    } else {
+                        incorrect++;
+                        score -= 2 / 3;
+                    }
+                }
+                document.getElementById(`sol${index}`).style.display = "block"; // Show solution
+            });
+
+            document.getElementById("resultBox").innerHTML = `
+                <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
+                <p><strong>Attempted:</strong> ${attempted}</p>
+                <p><strong>Correct:</strong> ${correct}</p>
+                <p><strong>Incorrect:</strong> ${incorrect}</p>
+                <p><strong>Unattempted:</strong> ${unattempted}</p>
+            `;
+            document.getElementById("resultBox").style.display = "block";
+        }
+    </script>
+</body>
+</html>
