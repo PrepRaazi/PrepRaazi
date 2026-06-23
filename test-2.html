@@ -62,7 +62,7 @@
         const testNumber = getTestNumber();
         const questions = allTests[testNumber] || allTests["1"]; // Default to Test 1 if not found
 
-        document.getElementById("testTitle").innerText = `GATE Test ${testNumber}`;
+        document.getElementById("testTitle").innerText = `Test ${testNumber}`;
 
         const questionsContainer = document.getElementById("questionsContainer");
         questions.forEach((item, index) => {
