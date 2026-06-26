@@ -54,8 +54,126 @@
 
 			],
             "2": [
-                { q: "In a fluid mechanics test, a venturimeter is used to measure flow rate. If the inlet diameter is 200 mm and throat diameter is 100 mm, and the pressure difference is 10 kPa, the flow rate is approximately:", options: ["0.1 m³/s", "0.2 m³/s", "0.3 m³/s", "0.4 m³/s"], answer: 1, solution: "Using Bernoulli's equation, the flow rate is approximately 0.2 m³/s." },
-                { q: "A reservoir has a uniform seepage rate of 0.005 m/day. If the permeability of the soil is 1 × 10⁻⁶ m/s, the hydraulic gradient is:", options: ["2", "5", "10", "20"], answer: 2, solution: "Hydraulic gradient = Seepage rate / Permeability. The answer is 10." }
+                {
+    "q": "At which axis does the neutral axis lie when a cross-section is fully yielded into its plastic zone?",
+    "options": ["Centroidal axis", "Equal area axis", "Symmetrical axis", "Eccentric axis"],
+    "answer": 1,
+    "solution": "In the fully plastic state, the tension force must equal the compression force, which splits the cross-section into two equal areas."
+  },
+  {
+    "q": "What is the shape factor for a standard rectangular cross-section?",
+    "options": ["1.12", "1.50", "1.70", "2.00"],
+    "answer": 1,
+    "solution": "The shape factor of a rectangular cross-section is exactly 1.50, calculated as the ratio of the plastic section modulus to the elastic section modulus."
+  },
+  {
+    "q": "For a simply supported beam of length L carrying a concentrated load at mid-span, what is the expression for plastic hinge length ($L_p$)?",
+    "options": ["L(1 - 1/SF)", "L*sqrt(1 - 1/SF)", "L(1 - sqrt(SF))", "L / SF"],
+    "answer": 0,
+    "solution": "The bending moment diagram varies linearly for a central point load, yielding a plastic hinge length proportional to (1 - 1/SF)."
+  },
+  {
+    "q": "Why is plastic design generally not suggested for statically determinate structures?",
+    "options": [
+      "Because they cannot undergo any plastic deformation before failure.",
+      "Because the formation of a single plastic hinge turns a determinate structure into an unstable mechanism.",
+      "Because their shape factor is always less than one.",
+      "Because they carry zero shear force at collapse."
+    ],
+    "answer": 1,
+    "solution": "Statically determinate structures have zero redundancy ($r = 0$), meaning a single plastic hinge causes immediate collapse without moment redistribution."
+  },
+  {
+    "q": "Which of the following correctly describes the Static or Lower Bound Theorem?",
+    "options": [
+      "The collapse load calculated satisfies the mechanism and continuity conditions, yielding W >= W_u.",
+      "The collapse load calculated satisfies the equilibrium and yield conditions, yielding W <= W_u.",
+      "The collapse load satisfies all three conditions simultaneously, yielding W = W_u.",
+      "The collapse load depends solely on the ductility and shape factor of the cross-section."
+    ],
+    "answer": 1,
+    "solution": "The lower bound theorem states that any load system satisfying equilibrium and not violating the yield condition is less than or equal to the true collapse load."
+  },
+  {
+    "q": "What is the shape factor for a solid circular cross-section?",
+    "options": ["1.50", "1.70", "1.27", "2.34"],
+    "answer": 1,
+    "solution": "A solid circle has a shape factor of approximately 1.70 due to its specific geometric mass distribution."
+  },
+  {
+    "q": "What is the recommended design load factor for the combination: Dead Load + Wind Load/Earthquake Load + Imposed Load (DL + WL/EL + IL)?",
+    "options": ["1.7", "1.5", "1.3", "2.0"],
+    "answer": 2,
+    "solution": "The reduced load factor is taken as 1.3 when multiple transient environmental loads occur concurrently with dead and live loads."
+  },
+  {
+    "q": "If a structure has a static redundancy of r, how many plastic hinges are required to develop a 'Complete Collapse' mechanism?",
+    "options": ["r", "r - 1", "r + 1", "r + 2"],
+    "answer": 2,
+    "solution": "A complete collapse mechanism occurs when exactly r + 1 hinges form, removing all redundant constraints and rendering the entire system unstable."
+  },
+  {
+    "q": "What is the formula to find the total number of independent mechanisms (n) in a frame or continuous beam?",
+    "options": ["n = N + r", "n = N - r", "n = r - N", "n = 2N - r"],
+    "answer": 1,
+    "solution": "The number of independent mechanisms equals the total possible plastic hinge locations (N) minus the degree of static redundancy (r)."
+  },
+  {
+    "q": "What is the ultimate collapse load ($w_u$) for a fixed beam of length L carrying a uniformly distributed load (UDL) with a plastic moment capacity of $M_p$?",
+    "options": ["8*M_p / L^2", "12*M_p / L^2", "16*M_p / L^2", "11.656*M_p / L^2"],
+    "answer": 2,
+    "solution": "By moment redistribution, a fixed beam under UDL forms three hinges at collapse (ends and mid-span), leading to w_u = 16*M_p / L^2."
+  },
+  {
+    "q": "Which basic analytical criterion represents the Yield Condition in plastic structural analysis?",
+    "options": [
+      "The sum of all external forces and internal moments must balance out to zero.",
+      "The bending moment at any cross-section must not exceed the full plastic moment capacity (M <= M_p).",
+      "A sufficient number of plastic hinges must form to transform the structure into a mechanism.",
+      "The internal virtual work done must be strictly greater than external work done."
+    ],
+    "answer": 1,
+    "solution": "The yield condition dictates that the internal bending moment at any point along the member cannot physically exceed its ultimate plastic moment capacity ($M_p$)."
+  },
+  {
+    "q": "How does the major axis shape factor of a standard structural steel I-section compare to its minor axis shape factor?",
+    "options": [
+      "The major axis shape factor is larger.",
+      "The minor axis shape factor is larger.",
+      "They are exactly equal.",
+      "They both always equal 1.50."
+    ],
+    "answer": 1,
+    "solution": "The major axis shape factor is around 1.12, whereas the minor axis is roughly 1.55, making the minor axis larger."
+  },
+  {
+    "q": "The Kinematic or Upper Bound Theorem satisfies which specific structural conditions?",
+    "options": [
+      "Equilibrium and Yield conditions",
+      "Equilibrium and Mechanism conditions",
+      "Yield and Uniqueness conditions",
+      "Mechanism and Yield conditions exclusively"
+    ],
+    "answer": 1,
+    "solution": "The kinematic method assumes a valid mechanism and applies virtual work, which inherently satisfies mechanism compatibility and equilibrium."
+  },
+  {
+    "q": "What does the 'Reserve Strength' ($\\\\Psi$) parameter represent in the redistribution of moments for a beam?",
+    "options": [
+      "The ratio of the elastic section modulus to the plastic section modulus.",
+      "The ratio of the ultimate collapse load to the initial yield load (w_u / w_y).",
+      "The absolute maximum curvature possible before strain hardening occurs.",
+      "The factor of safety divided by the shape factor."
+    ],
+    "answer": 1,
+    "solution": "Reserve strength measures the capacity of a redundant structure to carry additional load between first yielding and total collapse ($\\\\Psi = w_u / w_y$)."
+  },
+  {
+    "q": "Which cross-sectional profile exhibits the highest shape factor?",
+    "options": ["Rectangular section", "Triangular section (vertex up)", "Solid circular section", "Diamond section"],
+    "answer": 1,
+    "solution": "A triangular cross-section features a very high shape factor of 2.34 because much of its area is situated close to its base relative to its centroid."
+  }
             ]
         };
 
