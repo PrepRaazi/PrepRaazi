@@ -173,6 +173,166 @@
     "options": ["Rectangular section", "Triangular section (vertex up)", "Solid circular section", "Diamond section"],
     "answer": 1,
     "solution": "A triangular cross-section features a very high shape factor of 2.34 because much of its area is situated close to its base relative to its centroid."
+  },
+  {
+    "q": "In plastic design, when a section undergoes 'perfectly plastic' deformation up to the strain hardening zone, how does the maximum curvature change during this phase?",
+    "options": [
+      "It increases linearly with the bending moment.",
+      "It remains completely constant while the moment increases.",
+      "It becomes theoretically infinite at a constant plastic moment ($M_p$).",
+      "It decreases as the plastic hinge length stabilizes."
+    ],
+    "answer": 2,
+    "solution": "In the perfectly plastic plateau, the cross-section undergoes infinite rotation/curvature at a constant restraining moment equal to $M_p$ before strain hardening begins."
+  },
+  {
+    "q": "For a diamond (rhombus) cross-section, the shape factor is 2.00. What does this value physically imply about the section's capacity?",
+    "options": [
+      "Its elastic moment capacity is twice its plastic moment capacity.",
+      "It has a 100% reserve capacity beyond its initial elastic limit ($M_p = 2.0 \\cdot M_y$).",
+      "It will form two plastic hinges simultaneously under any load setup.",
+      "It is twice as efficient as an I-section when bending about the major axis."
+    ],
+    "answer": 1,
+    "solution": "Since the shape factor equals $M_p / M_y = 2.00$, the ultimate plastic moment capacity is exactly double the moment required to reach first structural yield."
+  },
+  {
+    "q": "Consider a simply supported beam of length L carrying a uniformly distributed load w. If the shape factor is SF, what is the exact formula for the plastic hinge length ($L_p$) at collapse?",
+    "options": [
+      "L(1 - 1/SF)",
+      "L*sqrt(1 - 1/SF)",
+      "L(1 - sqrt(1/SF))",
+      "(L/2)*(1 - 1/SF)"
+    ],
+    "answer": 1,
+    "solution": "Because a UDL produces a parabolic bending moment diagram, solving for the zone where the bending moment exceeds the yield moment produces a square-root relationship involving the shape factor."
+  },
+  {
+    "q": "Why does a standard structural steel I-section have a much lower major-axis shape factor (~1.12) compared to its minor-axis shape factor (~1.55)?",
+    "options": [
+      "The web carries all the nominal bending moment about the minor axis.",
+      "About the major axis, most of the material (flanges) is already located far from the neutral axis, minimizing the difference between the plastic and elastic section moduli.",
+      "The elastic neutral axis shifts significantly away from the equal area axis during major axis bending.",
+      "Plastic hinges cannot fully form along the minor axis due to early local buckling limits."
+    ],
+    "answer": 1,
+    "solution": "The shape factor measures area distribution; when mass is concentrated heavily at the extreme fibers (like flanges in major-axis bending), the elastic section modulus is already highly optimized, leaving less reserve plastic capacity."
+  },
+  {
+    "q": "What does the Uniqueness Theorem state regarding a collapsing structure?",
+    "options": [
+      "The collapse load is strictly bounded below by the kinematic method.",
+      "A unique collapse load is achieved if and only if the equilibrium, yield, and mechanism conditions are satisfied simultaneously.",
+      "The number of independent mechanisms must exactly equal the number of redundancies.",
+      "Every cross-section must reach its strain-hardening zone at the exact same instant."
+    ],
+    "answer": 1,
+    "solution": "The Uniqueness Theorem establishes that if a calculated load satisfies all three fundamental criteria (equilibrium, yield, and mechanism), it represents the true, exact collapse load."
+  },
+  {
+    "q": "If a cross-section has a compression area $A_1$ with a centroid distance $\\bar{y}_1$ and a tension area $A_2$ with a centroid distance $\\bar{y}_2$ from the equal area axis, what is the proper expression for the plastic section modulus ($Z_p$)?",
+    "options": [
+      "((A_1 + A_2) / 2) * (\\bar{y}_1 + \\bar{y}_2)",
+      "A_1*\\bar{y}_1 + A_2*\\bar{y}_2 = (A / 2) * (\\bar{y}_1 + \\bar{y}_2)",
+      "A * ((\\bar{y}_1 + \\bar{y}_2) / 2)^2",
+      "(f_y / 2) * (A_1*\\bar{y}_1 + A_2*\\bar{y}_2)"
+    ],
+    "answer": 1,
+    "solution": "Since $A_1 = A_2 = A/2$ at the plastic neutral axis, factoring out the area terms gives the combined first moment of area as $(A/2) \\cdot (\\bar{y}_1 + \\bar{y}_2)$."
+  },
+  {
+    "q": "In moment redistribution, a propped cantilever beam under a UDL has an ultimate collapse load of $11.656 \\cdot M_p / L^2$. At what load threshold does the very first plastic hinge form?",
+    "options": [
+      "8 * M_p / L^2",
+      "12 * M_p / L^2",
+      "16 * M_p / L^2",
+      "11.656 * M_y / L^2"
+    ],
+    "answer": 1,
+    "solution": "The first plastic hinge forms at the fixed support when the elastic support moment reaches $M_p$, which occurs at an elastic load value of $12 \\cdot M_p / L^2$."
+  },
+  {
+    "q": "A frame structure has r static redundancies and N possible plastic hinge locations. If a selected mechanism yields an over-complete collapse criteria where the number of actual hinges is greater than r + 1, what does this mean physically?",
+    "options": [
+      "The structure is still completely stable and can carry more load.",
+      "Two or more independent mechanisms correspond to the true collapse load simultaneously.",
+      "The structural geometry was modeled with incorrect boundary connections.",
+      "The load calculated represents a strict lower bound."
+    ],
+    "answer": 1,
+    "solution": "An over-complete collapse condition implies that multiple localized or distinct failure mechanisms happen to collapse at the exact same load parameter."
+  },
+  {
+    "q": "When applying the Principle of Virtual Work to a collapse mechanism, the internal work is calculated as $\\Sigma (M_p \\cdot \\theta)$. What does $\\theta$ strictly represent?",
+    "options": [
+      "The elastic rotation of the beam segment before yielding.",
+      "The total curvature of the member divided by its length.",
+      "The relative plastic rotation occurring at the localized plastic hinge.",
+      "The rigid body displacement of the concentrated load point."
+    ],
+    "answer": 2,
+    "solution": "Internal energy in plastic mechanisms is absorbed entirely by the concentrated plastic rotations ($\\theta$) taking place at the localized hinge points."
+  },
+  {
+    "q": "Why does the presence of a high shear force at a section theoretically reduce its plastic moment capacity ($M_p$)?",
+    "options": [
+      "High shear force shifts the neutral axis away from the equal area location.",
+      "Shear stress occupies a portion of the material's yield strength, leaving less normal stress capacity available to resist bending.",
+      "Shear force prevents the material from entering the strain-hardening region.",
+      "It forces the plastic hinge length ($L_p$) to drop to zero instantly."
+    ],
+    "answer": 1,
+    "solution": "Under combined loading criteria, shear stresses interact with normal stresses; high shear reduces the maximum allowable normal stress, lowering the available moment capacity."
+  },
+  {
+    "q": "For a continuous beam with three spans carrying individual loads, how do you determine the overall collapse load of the entire system?",
+    "options": [
+      "Take the average collapse load of all three individual spans.",
+      "Take the maximum collapse load among the three spans.",
+      "Take the minimum collapse load among the individual spans.",
+      "Sum up the collapse loads of all spans together."
+    ],
+    "answer": 2,
+    "solution": "The continuous system will experience structural failure as soon as its weakest span forms a localized mechanism, making the minimum individual span capacity the governing value."
+  },
+  {
+    "q": "What does a load factor of 1.3 for the combination (DL + WL/EL + IL) imply compared to a factor of 1.7 for (DL + IL)?",
+    "options": [
+      "Wind and earthquake forces are completely unpredictable and require less safety margin.",
+      "There is a lower probability that full design wind/earthquake loads and peak live loads will act simultaneously.",
+      "Structures become more ductile when subjected to lateral loads.",
+      "Material yield stress increases under dynamic wind conditions."
+    ],
+    "answer": 1,
+    "solution": "Standard structural probability limits permit a reduced combined load factor because it is highly unlikely that multiple independent transient loads will reach their peaks concurrently."
+  },
+  {
+    "q": "In a structural joint where four distinct frame members meet rigidly, what is the maximum number of plastic hinges that can form at that individual joint without collapsing it immediately?",
+    "options": ["1", "2", "3", "4"],
+    "answer": 2,
+    "solution": "To maintain structural connectivity at a rigid joint connecting m members, at least one member must remain unhinged to transfer stable moments, limiting the hinges to m - 1."
+  },
+  {
+    "q": "The Kinematic (Upper Bound) Theorem states that the calculated load W is greater than or equal to the true collapse load $W_u$. What must a designer do to find the true collapse load using this approach?",
+    "options": [
+      "Look for the mechanism that gives the highest possible value of W.",
+      "Find the load that keeps the bending moment diagram completely below $M_p$.",
+      "Analyze all possible valid mechanisms and identify the minimum calculated load.",
+      "Integrate the plastic section modulus along the entire span."
+    ],
+    "answer": 2,
+    "solution": "Because the kinematic method yields values that overestimate or match the structural capacity, the lowest upper bound among all mechanisms represents the exact collapse load."
+  },
+  {
+    "q": "Under the criteria for plastic analysis, if a postulated mechanism satisfies equilibrium and mechanism conditions, but the internal bending moment at an unhinged section is found to be $1.2 \\cdot M_p$, what does this indicate about your calculated load?",
+    "options": [
+      "It is the true collapse load.",
+      "It is a lower bound estimate ($W \\le W_u$).",
+      "It is an upper bound estimate ($W \\ge W_u$) but needs to be lowered by checking other mechanisms.",
+      "The structure is in a state of stable elastic equilibrium."
+    ],
+    "answer": 2,
+    "solution": "Violating the yield criterion ($M > M_p$) indicates that the mechanism method overpredicted the internal structural capacity, confirming that the load behaves as an upper bound."
   }
             ]
         };
