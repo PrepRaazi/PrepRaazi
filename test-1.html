@@ -163,21 +163,19 @@ function calculateScore() {
 }
 
 function sendReportCardToInstructor(finalScore, att, corr, incorr) {
-    // Prompt for student ID/Name tracking details
     let candidateName = prompt("Please enter your name/roll number to record your score card:") || "Anonymous Student";
     let testTitleName = document.getElementById("testTitle").innerText;
 
-    // ⚠️ CONFIGURATION: Replace with your secondary reporting Google Form ID
+    // Corrected functional submission gateway
     const REPORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScVZINgA2CA0bMlA6Q6zrceaJ6MrkbQAgSHyckCU3tcnm5XSw/formResponse";
 
-    // Create tracking payload matching Google Form entry codes
     let formData = new FormData();
-    formData.append("entry.1055773345", candidateName);  // Field for Student Identity
-    formData.append("entry.1376015284", testTitleName);   // Field for Active Test Title
-    formData.append("entry.2081767486", finalScore);      // Field for Calculated Score
+    // ⚠️ Replace these placeholder numbers with the actual field entry numbers you inspect from your live form
+    formData.append("entry.1055773345", candidateName);  
+    formData.append("entry.1376015284", testTitleName);   
+    formData.append("entry.2081767486", finalScore);      
     formData.append("entry.1028667235", `Attempted: ${att} | Correct: ${corr} | Incorrect: ${incorr}`);
 
-    // Silently route payload right to your dashboard grid sheet
     fetch(REPORT_FORM_URL, {
         method: "POST",
         mode: "no-cors",
