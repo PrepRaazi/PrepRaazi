@@ -126,38 +126,66 @@
         });
 
         function calculateScore() {
-            let score = 0;
-            let attempted = 0;
-            let correct = 0;
-            let incorrect = 0;
-            let unattempted = 0;
+    let score = 0;
+    let attempted = 0;
+    let correct = 0;
+    let incorrect = 0;
+    let unattempted = 0;
 
-            questions.forEach((item, index) => {
-                let selected = document.querySelector(`input[name='q${index}']:checked`);
-                if (!selected) {
-                    unattempted++;
-                } else {
-                    attempted++;
-                    if (parseInt(selected.value) === item.answer) {
-                        correct++;
-                        score += 2;
-                    } else {
-                        incorrect++;
-                        score -= 2 / 3;
-                    }
-                }
-                document.getElementById(`sol${index}`).style.display = "block"; // Show solution
-            });
-
-            document.getElementById("resultBox").innerHTML = `
-                <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
-                <p><strong>Attempted:</strong> ${attempted}</p>
-                <p><strong>Correct:</strong> ${correct}</p>
-                <p><strong>Incorrect:</strong> ${incorrect}</p>
-                <p><strong>Unattempted:</strong> ${unattempted}</p>
-            `;
-            document.getElementById("resultBox").style.display = "block";
+    questions.forEach((item, index) => {
+        let selected = document.querySelector(`input[name='q${index}']:checked`);
+        if (!selected) {
+            unattempted++;
+        } else {
+            attempted++;
+            if (parseInt(selected.value) === item.answer) {
+                correct++;
+                score += 2;
+            } else {
+                incorrect++;
+                score -= 2 / 3;
+            }
         }
+        document.getElementById(`sol${index}`).style.display = "block"; 
+    });
+
+    document.getElementById("resultBox").innerHTML = `
+        <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
+        <p><strong>Attempted:</strong> ${attempted}</p>
+        <p><strong>Correct:</strong> ${correct}</p>
+        <p><strong>Incorrect:</strong> ${incorrect}</p>
+        <p><strong>Unattempted:</strong> ${unattempted}</p>
+    `;
+    document.getElementById("resultBox").style.display = "block";
+
+    // 🚀 NEW AUTOMATED REPORT CARD DISPATCH SYSTEM
+    sendReportCardToInstructor(score.toFixed(2), attempted, correct, incorrect);
+}
+
+function sendReportCardToInstructor(finalScore, att, corr, incorr) {
+    // Prompt for student ID/Name tracking details
+    let candidateName = prompt("Please enter your name/roll number to record your score card:") || "Anonymous Student";
+    let testTitleName = document.getElementById("testTitle").innerText;
+
+    // ⚠️ CONFIGURATION: Replace with your secondary reporting Google Form ID
+    const REPORT_FORM_URL = "https://docs.google.com/forms/d/e/YOUR_REPORT_FORM_ID_HERE/formResponse";
+
+    // Create tracking payload matching Google Form entry codes
+    let formData = new FormData();
+    formData.append("entry.111111111", candidateName);  // Field for Student Identity
+    formData.append("entry.222222222", testTitleName);   // Field for Active Test Title
+    formData.append("entry.333333333", finalScore);      // Field for Calculated Score
+    formData.append("entry.444444444", `Attempted: ${att} | Correct: ${corr} | Incorrect: ${incorr}`);
+
+    // Silently route payload right to your dashboard grid sheet
+    fetch(REPORT_FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+    }).then(() => {
+        alert("Your report card has been successfully submitted to the instructor dashboard!");
+    }).catch(err => console.error("Data submission log error: ", err));
+}
     </script>
 </body>
 </html>
