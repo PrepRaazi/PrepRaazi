@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrepRaazi - Home</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Notice Board Styling */
+        .notice-board {
+            width: 80%;
+            margin: 20px auto 0 auto;
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .notice-badge {
+            background-color: #dc3545;
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: blinker 1.5s linear infinite;
+        }
+        .notice-text {
+            margin: 0;
+            color: #856404;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        @keyframes blinker {
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
 <body>
 
@@ -23,15 +58,23 @@
 </header>
 
 <main class="home-container">
+    <!-- 🔔 NOTICE & UPDATES SECTION -->
+    <div class="notice-board">
+        <span class="notice-badge">New Update</span>
+        <p class="notice-text">
+            <strong>🚀 ESE Mains Test Series live:</strong> Conventional Mains Test 1 through Test 12 schedules are updated. Check the ESE Civil portal to submit answer sheets directly!
+        </p>
+    </div>
+
     <section class="hero">
-        <h1>Master UPSC ESE with PrepRaazi</h1>
-        <p>Unlock comprehensive conventional test panels, systematic weekly check-ins, and targeted performance tracking designed for the Engineering Services Examination.</p>
+        <h1>Master UPSC ESE & Crack All Civil Engineering Exams</h1>
+        <p>Your complete Pre + Mains integrated learning ecosystem. By masterfully aligning the depth of ESE Civil Engineering and General Studies, we build a robust technical foundation that positions you to conquer GATE, SSC JE, RRB JE, and State AE/JE examinations with absolute confidence.</p>
     </section>
 
     <section class="who-we-are">
         <div class="text">
             <h2>Who We Are</h2>
-            <p>PrepRaazi is your ultimate conventional exam partner, offering strictly structured practice modules that match the exact evaluation standards and technical patterns of the UPSC ESE.</p>
+            <p>PrepRaazi is a comprehensive preparation framework engineered by experts. We bridge the gap between objective speed and conventional conceptual depth. Our unique approach focuses deeply on the entire ESE lifecycle (Prelims objective clarity + Mains conventional writing rigor), building structural instincts that elevate your performance across every technical platform.</p>
         </div>
         <img src="who-we-are.jpg" alt="Who We Are">
     </section>
@@ -39,11 +82,13 @@
     <section class="exams-we-cover">
         <img src="exams-we-cover.jpg" alt="Exams We Cover">
         <div class="text">
-            <h2>Curriculum We Cover</h2>
+            <h2>One Foundation, Infinite Opportunities</h2>
+            <p style="margin-bottom: 15px; font-size: 0.95rem; color: #555;">Our integrated Pre + Mains curriculum serves as the ultimate master key for all major premier examinations:</p>
             <ul>
-                <li><strong>ESE Civil Engineering (Mains)</strong> – 12 Conventional Stage-II mock modules with direct dashboard feedback.</li>
-                <li><strong>ESE Civil Engineering (Prelims)</strong> – Target subject assessments tracking your negative-marking speed.</li>
-                <li><strong>ESE General Studies (Prelims)</strong> – Coverage of engineering aptitude, ethics, and core standards.</li>
+                <li><strong>UPSC ESE (Prelims & Mains)</strong> – Specialized conventional test tracks with comprehensive General Studies aptitude and strict evaluations.</li>
+                <li><strong>GATE Alignment</strong> – Deep focus on fundamental core concepts and mathematical reasoning that directly maps to numerical mastery.</li>
+                <li><strong>SSC JE & RRB JE</strong> – Complete objective agility paired with technical clarity tailored for central government technical tracks.</li>
+                <li><strong>State AE / JE Assurances</strong> – Conceptual frameworks adaptable to the custom state public service commission patterns across India.</li>
             </ul>
         </div>
     </section>
@@ -51,9 +96,10 @@
     <section class="why-choose-us">
         <div class="text">
             <h2>Why Choose PrepRaazi?</h2>
-            <p>🚀 Dedicated Conventional Framework – Specialized question sets tracking complete structural concepts.</p>
-            <p>📊 Centralized Submission Portals – Upload answer sheets directly on the site for detailed evaluation loops.</p>
-            <p>💡 Automated Performance Logging – Review instant solutions while your scorecards map directly to the instructor space.</p>
+            <p>🚀 360-Degree Integrated Approach – Complete mastery of objective scanning and deep, step-by-step conventional derivation skills.</p>
+            <p>📊 Native Direct Submission Modules – Upload conventional answer sheets right on the site for detailed evaluation loops without changing windows.</p>
+            <p>💡 Comprehensive General Studies Focus – Master non-technical engineering aptitudes, ethics, and project management vital for competitive edge.</p>
+            <p>📈 Real-Time Tracking & Analysis – Practice with targeted tests where your instant report cards sync directly to the master instructor dashboard.</p>
         </div>
         <img src="why-choose-us.jpg" alt="Why Choose Us">
     </section>
