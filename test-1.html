@@ -125,7 +125,7 @@
             questionsContainer.innerHTML += questionHTML;
         });
 
-        function calculateScore() {
+function calculateScore() {
     let score = 0;
     let attempted = 0;
     let correct = 0;
@@ -168,14 +168,14 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
     let testTitleName = document.getElementById("testTitle").innerText;
 
     // ⚠️ CONFIGURATION: Replace with your secondary reporting Google Form ID
-    const REPORT_FORM_URL = "https://docs.google.com/forms/d/e/YOUR_REPORT_FORM_ID_HERE/formResponse";
+    const REPORT_FORM_URL = "https://forms.gle/NKu7KTbc76pZ8cyb6";
 
     // Create tracking payload matching Google Form entry codes
     let formData = new FormData();
-    formData.append("entry.111111111", candidateName);  // Field for Student Identity
-    formData.append("entry.222222222", testTitleName);   // Field for Active Test Title
-    formData.append("entry.333333333", finalScore);      // Field for Calculated Score
-    formData.append("entry.444444444", `Attempted: ${att} | Correct: ${corr} | Incorrect: ${incorr}`);
+    formData.append("entry.1055773345", candidateName);  // Field for Student Identity
+    formData.append("entry.1376015284", testTitleName);   // Field for Active Test Title
+    formData.append("entry.2081767486", finalScore);      // Field for Calculated Score
+    formData.append("entry.1028667235", `Attempted: ${att} | Correct: ${corr} | Incorrect: ${incorr}`);
 
     // Silently route payload right to your dashboard grid sheet
     fetch(REPORT_FORM_URL, {
