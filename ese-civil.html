@@ -77,7 +77,7 @@
             cursor: not-allowed;
         }
 
-        /* Direct Upload Modal Styling */
+        /* Secure Upload Modal Styling */
         .upload-modal {
             display: none;
             position: fixed;
@@ -92,12 +92,13 @@
         }
         .modal-content {
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             width: 90%;
-            max-width: 650px;
+            max-width: 500px;
             box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
             position: relative;
+            text-align: center;
         }
         .close-modal {
             position: absolute;
@@ -145,9 +146,13 @@
     <div class="modal-content">
         <span class="close-modal" onclick="closeUploadPortal()">&times;</span>
         <h2 id="modalTestTitle">Upload Answer Sheet</h2>
-        <p>Fill out the form below to attach your PDF answer sheet directly to our system.</p>
-        <!-- The Google Form Iframe will load here natively -->
-        <iframe id="uploadIframe" src="" width="100%" height="500px" frameborder="0" marginheight="0" marginwidth="0">Loading portal...</iframe>
+        <p style="margin-bottom: 25px; color: #555; line-height: 1.5;">
+            To submit your PDF securely to our evaluation panel, click the link below. It will launch the active submission window.
+        </p>
+        
+        <a id="directUploadBtn" href="" target="_blank" class="btn-mains upload-btn" style="display: inline-block; padding: 12px 30px; font-size: 1.1rem;">
+            🚀 Open Direct Upload Window
+        </a>
     </div>
 </div>
 
@@ -156,9 +161,8 @@
 </footer>
 
 <script>
-    // ⚠️ CRITICAL CONFIGURATION:
-    // Go to Google Forms, make a form with a "File Upload" question, click "Send" -> "Embed (iframe)", copy the src URL and paste it below.
-    const GOOGLE_FORM_EMBED_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfYourFormIDHere/viewform?embedded=true";
+    // 🔗 Live submission form link configured successfully
+    const GOOGLE_FORM_URL = "https://forms.gle/M2FsFtrnqpg4A9bb9";
 
     const mainsTestsData = [
         {
@@ -262,19 +266,18 @@
         });
     });
 
-    // Modal Control Functions
+    // Modal Display Adjustments
     function openUploadPortal(testName) {
         document.getElementById("modalTestTitle").innerText = `Upload Answer Sheet - ${testName}`;
-        document.getElementById("uploadIframe").src = GOOGLE_FORM_EMBED_URL;
+        document.getElementById("directUploadBtn").href = GOOGLE_FORM_URL;
         document.getElementById("uploadModal").style.display = "flex";
     }
 
     function closeUploadPortal() {
         document.getElementById("uploadModal").style.display = "none";
-        document.getElementById("uploadIframe").src = ""; // Clear source to prevent duplicate handling
     }
 
-    // Close modal if user clicks outside the box
+    // Close window instantly if background overlay clicked
     window.onclick = function(event) {
         const modal = document.getElementById("uploadModal");
         if (event.target == modal) {
