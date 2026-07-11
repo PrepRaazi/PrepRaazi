@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepRaazi - ESE Civil Mains</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .mains-container {
+            width: 85%;
+            margin: 30px auto;
+        }
+        .mains-hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #003366, #0055aa);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .mains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .test-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #003366;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .test-card h3 {
+            margin-top: 0;
+            color: #003366;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .action-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn-mains {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: background 0.3s, transform 0.1s;
+        }
+        .btn-mains:active {
+            transform: scale(0.98);
+        }
+        .download-btn {
+            background-color: #0073e6;
+            color: white;
+        }
+        .download-btn:hover { background-color: #005bb5; }
+
+        .upload-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .upload-btn:hover { background-color: #218838; }
+
+        .evaluated-btn {
+            background-color: #ffcc00;
+            color: #003366;
+        }
+        .evaluated-btn:hover { background-color: #e6b800; }
+        
+        .disabled-btn {
+            background-color: #e0e0e0;
+            color: #888888;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="Logo.jpeg" alt="PrepRaazi Logo">
+        <h1>PrepRaazi</h1>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gate.html">GATE Test</a>
+        <a href="ese-civil.html" class="active">ESE Civil</a>
+        <a href="ese-general.html">ESE General</a>
+        <a href="syllabus.html">Syllabus</a>
+    </nav>
+</header>
+
+<main class="mains-container">
+    <section class="mains-hero">
+        <h1>ESE Civil Engineering Mains Test Series</h1>
+        <p>📝 Download conventional question papers, upload your answers, and check your evaluated sheets.</p>
+    </section>
+
+    <div class="mains-grid" id="mainsTestGrid">
+        <!-- Test Cards will be injected here dynamically by JavaScript -->
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 PrepRaazi. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Configuration array for your 12 Mains Tests
+    // Paste your direct Google Drive links here. 
+    // Leave links as empty strings "" if the file/folder isn't ready yet; the UI will gracefully disable the button.
+    const mainsTestsData = [
+        {
+            id: 1,
+            name: "Mains Test 1",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: "https://drive.google.com/file/d/1XQnj7msWsrvJanfxCzSkWy_3NHmtRFzA/view?usp=drive_link"
+        },
+        {
+            id: 2,
+            name: "Mains Test 2",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing", // Uploading to same folder as requested
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: "" // Add when ready
+        },
+        {
+            id: 3,
+            name: "Mains Test 3",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 4,
+            name: "Mains Test 4",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 5,
+            name: "Mains Test 5",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 6,
+            name: "Mains Test 6",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 7,
+            name: "Mains Test 7",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 8,
+            name: "Mains Test 8",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 9,
+            name: "Mains Test 9",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 10,
+            name: "Mains Test 10",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 11,
+            name: "Mains Test 11",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        },
+        {
+            id: 12,
+            name: "Mains Test 12",
+            questionPaperLink: "https://drive.google.com/drive/folders/1sCzV_Ocld6_i7xvzpql73o9s88Hkbeyn?usp=sharing",
+            uploadAnswersLink: "https://drive.google.com/drive/folders/17cZCY6q9cpGWvZ5fPuMTpoDnOrfaqGqA?usp=sharing",
+            evaluatedSheetLink: ""
+        }
+    ];
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const gridContainer = document.getElementById("mainsTestGrid");
+
+        mainsTestsData.forEach(test => {
+            // Helper logic to check if a link is provided, otherwise visually disable it
+            const qLink = test.questionPaperLink ? `href="${test.questionPaperLink}" target="_blank"` : 'class="btn-mains disabled-btn"';
+            const uLink = test.uploadAnswersLink ? `href="${test.uploadAnswersLink}" target="_blank"` : 'class="btn-mains disabled-btn"';
+            const eLink = test.evaluatedSheetLink ? `href="${test.evaluatedSheetLink}" target="_blank"` : 'class="btn-mains disabled-btn"';
+
+            const cardHTML = `
+                <div class="test-card">
+                    <h3>📊 ${test.name}</h3>
+                    <div class="action-links">
+                        <a ${test.questionPaperLink ? qLink + ' class="btn-mains download-btn"' : qLink}>
+                            📥 Download Question Paper
+                        </a>
+                        <a ${test.uploadAnswersLink ? uLink + ' class="btn-mains upload-btn"' : uLink}>
+                            📤 Upload Answer Sheet
+                        </a>
+                        <a ${test.evaluatedSheetLink ? eLink + ' class="btn-mains evaluated-btn"' : eLink}>
+                            📋 View Evaluated Sheet
+                        </a>
+                    </div>
+                </div>
+            `;
+            gridContainer.innerHTML += cardHTML;
+        });
+    });
+</script>
+
+</body>
+</html>
