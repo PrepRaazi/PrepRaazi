@@ -17,7 +17,7 @@
         }
         .test-section-title {
             color: #003366;
-            margin-top: 40px;
+            margin-top: 20px;
             border-bottom: 2px solid #003366;
             padding-bottom: 5px;
         }
@@ -41,6 +41,7 @@
         .test-card h3 { margin: 0 0 10px 0; color: #333; }
         .test-card p { font-size: 0.85rem; color: #666; margin-bottom: 15px; }
         .start-btn {
+            display: block;
             background: #0073e6;
             color: white;
             padding: 10px;
@@ -50,9 +51,6 @@
             transition: 0.3s;
         }
         .start-btn:hover { background: #005bb5; }
-        .dynamic-card { border-top: 4px solid #ffcc00; }
-        .dynamic-btn { background: #ffcc00; color: #003366; }
-        .dynamic-btn:hover { background: #e6b800; }
     </style>
 </head>
 <body>
@@ -74,20 +72,9 @@
 <main class="gate-container">
     <section class="hero">
         <h1>GATE Civil Engineering Portal</h1>
-        <p>📚 Access dynamically generated adaptive full-length mock tests or targeted subject-wise assessments instantly.</p>
+        <p>📚 Access targeted topic-wise assessments and weekly scheduled mock tests instantly.</p>
     </section>
 
-    <!-- 🌟 DYNAMIC FULL LENGTH GENERATOR LINKED DIRECTLY -->
-    <h2 class="test-section-title">⚡ Live Grand Simulator</h2>
-    <div class="test-grid">
-        <div class="test-card dynamic-card">
-            <h3>Dynamic Mock Test</h3>
-            <p>65 Questions • 3 Hours<br>Randomized pattern with virtual calculator.</p>
-            <a href="gate-test.html" class="start-btn dynamic-btn">Launch Simulator</a>
-        </div>
-    </div>
-
-    <!-- 🌟 SUBJECT & WEEKLY TRACK TESTS LINKED DIRECTLY -->
     <h2 class="test-section-title">📝 Topic-Wise & Weekly Mock Tests</h2>
     <div class="test-grid" id="staticTestsGrid"></div>
 </main>
@@ -97,7 +84,6 @@
 </footer>
 
 <script>
-    // Easily add or adjust tests in this index layout array
     const testList = [
         { id: 1, name: "Test 1", desc: "General Civil Engineering Assessment", file: "test-1.html" },
         { id: 2, name: "Test 2", desc: "Subject Wise: Plastic Analysis Special", file: "test-2.html" },
