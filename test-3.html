@@ -5,34 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 3 - Weekly Mock Test</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding-top: 70px !important; }
-        .container { width: 80%; margin: auto; }
+        /* Base Setup with Top Padding to Prevent Header Overlap */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding-top: 80px !important; 
+            background-color: #f8f9fa;
+        }
+        .container { width: 80%; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .question { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #ddd; }
-        .options label { display: block; }
-        .submit-btn { margin-top: 20px; padding: 10px; background: blue; color: white; border: none; cursor: pointer; }
-        .result { margin-top: 20px; padding: 10px; border: 1px solid black; display: none; }
+        .options label { display: block; margin: 5px 0; cursor: pointer; }
+        .submit-btn { margin-top: 20px; padding: 12px 25px; background: blue; color: white; border: none; cursor: pointer; font-size: 1rem; font-weight: bold; border-radius: 4px; }
+        .submit-btn:hover { background: darkblue; }
+        .result { margin-top: 20px; padding: 15px; border: 1px solid black; background: #fff3cd; display: none; border-radius: 4px; }
         .solution { display: none; margin-top: 10px; padding: 10px; background: #f8f8f8; border-left: 4px solid green; }
         .correct { color: green; font-weight: bold; }
         .incorrect { color: red; font-weight: bold; }
 
-        /* Timer Header Styling */
+        /* Fixed Sticky Header Panel Styling */
         .test-header-bar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-            background-color: #003366; color: white; display: flex;
-            justify-content: space-between; align-items: center;
-            padding: 0 40px; box-sizing: border-box; z-index: 9999;
-            box-shadow: 0px 3px 6px rgba(0,0,0,0.1); font-family: Arial, sans-serif;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 60px;
+            background-color: #003366; 
+            color: white; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 0 40px; 
+            box-sizing: border-box; 
+            z-index: 9999;
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
         }
-        .test-header-bar h2 { margin: 0; font-size: 1.3rem; }
+        .test-header-bar h2 { margin: 0; font-size: 1.3rem; font-weight: 600; }
         .timer-display {
-            background-color: #ffcc00; color: #000; padding: 8px 16px;
-            font-weight: bold; border-radius: 5px; font-size: 1.1rem;
+            background-color: #ffcc00; 
+            color: #000; 
+            padding: 8px 16px;
+            font-weight: bold; 
+            border-radius: 5px; 
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Dynamic Header Elements -->
+    <!-- Fixed Timer Status Bar -->
     <div class="test-header-bar">
         <h2 id="portalTestTitle">ESE Test Arena — Loading...</h2>
         <div class="timer-display" id="dynamicTimerBox">Time Remaining: --:--</div>
@@ -42,7 +62,7 @@
         <h2 id="testTitle">Test 3</h2>
         <form id="gateTestForm">
             <div id="questionsContainer"></div>
-            <button type="button" class="submit-btn" onclick="calculateScore()">Submit</button>
+            <button type="button" class="submit-btn" id="mainSubmitBtn" onclick="calculateScore()">Submit Exam</button>
         </form>
         <div class="result" id="resultBox"></div>
     </div>
@@ -419,10 +439,16 @@
             ]
         };
 
+        // 2. Load Target Array Configurations
         const testNumber = getTestNumber();
         const questions = allTests[testNumber] || allTests["3"]; 
 
+        // 3. Render Dashboard Elements
         document.getElementById("testTitle").innerText = `Test ${testNumber}`;
+        const portalTitle = document.getElementById("portalTestTitle");
+        if (portalTitle) {
+            portalTitle.innerText = `ESE Test Arena — Test ${testNumber}`;
+        }
 
         const questionsContainer = document.getElementById("questionsContainer");
         questions.forEach((item, index) => {
@@ -441,27 +467,19 @@
             questionsContainer.innerHTML += questionHTML;
         });
 
-        // Configured Evaluation Logic
+        // 4. Integrated Timing Loop Elements
         let isExamSubmitted = false;
         let timerInterval;
         let totalExamDurationSeconds = 0;
         let timeRemainingSeconds = 0;
 
         function initTimer() {
-            if (typeof questions === "undefined" || !Array.isArray(questions)) {
-                console.error("PrepRaazi Engine Error: 'questions' array data block not located.");
-                return;
-            }
-
+            // Set dynamic duration rule: No. of Questions + 10 Minutes
             const durationInMinutes = questions.length + 10;
             totalExamDurationSeconds = durationInMinutes * 60;
             timeRemainingSeconds = totalExamDurationSeconds;
             
             const timerBox = document.getElementById("dynamicTimerBox");
-            const portalTitle = document.getElementById("portalTestTitle");
-            if (portalTitle) {
-                portalTitle.innerText = `ESE Test Arena — Test ${testNumber}`;
-            }
 
             timerInterval = setInterval(() => {
                 if (timeRemainingSeconds <= 0) {
@@ -479,9 +497,10 @@
             }, 1000);
         }
 
-        // Initialize timer immediately
+        // Fire timer execution instantly
         initTimer();
 
+        // 5. Unified Core Processing Engines
         function calculateScore() {
             if (isExamSubmitted) return;
             processExamResults(false);
@@ -492,6 +511,7 @@
             isExamSubmitted = true;
             clearInterval(timerInterval);
 
+            // Calculate exact time delta metrics
             let elapsedSeconds = totalExamDurationSeconds - timeRemainingSeconds;
             let takenMins = Math.floor(elapsedSeconds / 60);
             let takenSecs = elapsedSeconds % 60;
@@ -504,8 +524,9 @@
                 timerBox.style.color = "white";
             }
 
+            // Lock all form choices globally
             document.querySelectorAll("input[type='radio']").forEach(i => i.disabled = true);
-            const submitBtn = document.querySelector(".submit-btn");
+            const submitBtn = document.getElementById("mainSubmitBtn");
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = "0.5";
