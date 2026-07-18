@@ -227,7 +227,7 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
     let timeRemainingSeconds = 0;
 
     // 4. Set Up the Countdown Mechanism (Total Questions + 10 Minutes)
-    document.addEventListener("DOMContentLoaded", function() {
+    function initTimer() {
         if (typeof questions === "undefined" || !Array.isArray(questions)) {
             console.error("PrepRaazi Engine Error: 'questions' array data block not located.");
             return;
@@ -245,7 +245,7 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
                 timerBox.innerText = "Time Expired!";
                 timerBox.style.backgroundColor = "#dc3545";
                 timerBox.style.color = "white";
-                triggerAutoSubmission(); 
+                processExamResults(true); 
             } else {
                 timeRemainingSeconds--;
                 let mins = Math.floor(timeRemainingSeconds / 60);
@@ -253,20 +253,23 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
                 timerBox.innerText = `Time Remaining: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
             }
         }, 1000);
-    });
+    }
 
-    // 5. Intercept and Enhance the Core Calculation Flow
+    // Run timer initialization immediately or after DOM loads
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTimer);
+    } else {
+        initTimer();
+    }
+
+    // 5. Expose the submission function globally to override the button's onclick directly
     window.calculateScore = function() {
         if (isExamSubmitted) return;
         processExamResults(false);
     };
 
-    function triggerAutoSubmission() {
-        if (isExamSubmitted) return;
-        processExamResults(true);
-    }
-
     function processExamResults(isTimeOutTrigger) {
+        if (isExamSubmitted) return;
         isExamSubmitted = true;
         clearInterval(timerInterval);
 
@@ -275,6 +278,14 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
         let takenMins = Math.floor(elapsedSeconds / 60);
         let takenSecs = elapsedSeconds % 60;
         let timeTakenString = `${takenMins}m ${takenSecs}s`;
+
+        // Update timer box display status text
+        const timerBox = document.getElementById("dynamicTimerBox");
+        if (timerBox && !isTimeOutTrigger) {
+            timerBox.innerText = "Exam Completed";
+            timerBox.style.backgroundColor = "#28a745";
+            timerBox.style.color = "white";
+        }
 
         // Lock all inputs globally
         document.querySelectorAll("input[type='radio']").forEach(i => i.disabled = true);
@@ -330,8 +341,6 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
         formData.append("entry.1055773345", candidateName);  
         formData.append("entry.1376015284", testTitleName);   
         formData.append("entry.2081767486", score.toFixed(2));      
-        
-        // Appended the dynamic "Time Taken" variable clearly to the final summary payload row
         formData.append("entry.1028667235", `Time Taken: ${timeTakenString} | Attempted: ${attempted} | Correct: ${correct} | Incorrect: ${incorrect}`);
 
         fetch(REPORT_FORM_URL, {
@@ -343,6 +352,6 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
         }).catch(err => console.error("Data submission log error: ", err));
     }
 })();
- </script>
+</script>
 </body>
 </html>
