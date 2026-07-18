@@ -186,7 +186,7 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
 }
     </script>
 <script>
-  // ==========================================
+	// ==========================================
 // PREPRAAZI AUTOMATED EXAM CONTROLLER MODULE
 // ==========================================
 (function() {
@@ -220,9 +220,11 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
     `;
     document.body.insertBefore(headerBar, document.body.firstChild);
 
-    // 3. Initialize Global Tracking Flags
+    // 3. Initialize Global Tracking Flags and Time Metrics
     let timerInterval;
     let isExamSubmitted = false;
+    let totalExamDurationSeconds = 0;
+    let timeRemainingSeconds = 0;
 
     // 4. Set Up the Countdown Mechanism (Total Questions + 10 Minutes)
     document.addEventListener("DOMContentLoaded", function() {
@@ -232,7 +234,9 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
         }
 
         const durationInMinutes = questions.length + 10;
-        let timeRemainingSeconds = durationInMinutes * 60;
+        totalExamDurationSeconds = durationInMinutes * 60;
+        timeRemainingSeconds = totalExamDurationSeconds;
+        
         const timerBox = document.getElementById("dynamicTimerBox");
 
         timerInterval = setInterval(() => {
@@ -265,6 +269,12 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
     function processExamResults(isTimeOutTrigger) {
         isExamSubmitted = true;
         clearInterval(timerInterval);
+
+        // Calculate Exact Time Taken
+        let elapsedSeconds = totalExamDurationSeconds - timeRemainingSeconds;
+        let takenMins = Math.floor(elapsedSeconds / 60);
+        let takenSecs = elapsedSeconds % 60;
+        let timeTakenString = `${takenMins}m ${takenSecs}s`;
 
         // Lock all inputs globally
         document.querySelectorAll("input[type='radio']").forEach(i => i.disabled = true);
@@ -300,6 +310,7 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
             resultBox.innerHTML = `
                 <h3 style="color:#003366; margin-top:0;">${isTimeOutTrigger ? '⏱️ Time up! Exam Auto-Submitted.' : '📊 Exam Evaluation Summary'}</h3>
                 <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
+                <p><strong>Time Taken:</strong> ${timeTakenString}</p>
                 <p><strong>Attempted:</strong> ${attempted}</p>
                 <p><strong>Correct:</strong> ${correct}</p>
                 <p><strong>Incorrect:</strong> ${incorrect}</p>
@@ -309,7 +320,7 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
             resultBox.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Dispatch background dashboard transaction
+        // Prompt for student identity
         let candidateName = prompt("Exam finished! Please enter your name/roll number to record your scorecard:") || "Anonymous Student";
         let testTitleName = `Test ${currentTestNum}`;
 
@@ -319,7 +330,9 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
         formData.append("entry.1055773345", candidateName);  
         formData.append("entry.1376015284", testTitleName);   
         formData.append("entry.2081767486", score.toFixed(2));      
-        formData.append("entry.1028667235", `Attempted: ${attempted} | Correct: ${correct} | Incorrect: ${incorrect}`);
+        
+        // Appended the dynamic "Time Taken" variable clearly to the final summary payload row
+        formData.append("entry.1028667235", `Time Taken: ${timeTakenString} | Attempted: ${attempted} | Correct: ${correct} | Incorrect: ${incorrect}`);
 
         fetch(REPORT_FORM_URL, {
             method: "POST",
@@ -330,6 +343,6 @@ function sendReportCardToInstructor(finalScore, att, corr, incorr) {
         }).catch(err => console.error("Data submission log error: ", err));
     }
 })();
-</script>
+ </script>
 </body>
 </html>
