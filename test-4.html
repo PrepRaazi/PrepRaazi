@@ -395,6 +395,42 @@
     "answer": 2,
     "solution": "The connection between the flange and the web plate in a flexural member must resist the longitudinal horizontal shear stress (V·Q / I) that arises from the variation in bending moment along the span. Therefore, the fillet welds are explicitly designed to safely transmit this horizontal shear force from the flanges into the web."
   },
+  {
+    "q": "A crane with two wheels per side has a capacity of 50 kN. The weight of the crane bridge is 100 kN, the weight of the trolley is 10 kN, and the crane span is 12 m. If the maximum hook clearance allows the trolley to approach within 1.0 m of the side gantry rail, what is the maximum static wheel load experienced by the gantry girder?",
+    "options": ["50.0 kN", "52.5 kN", "55.0 kN", "60.0 kN"],
+    "answer": 1,
+    "solution": "1. Total weight of the moving load (trolley + capacity) = 50 + 10 = 60 kN.\n2. Maximum reaction on one side of the gantry rail due to this moving load occurs when it is closest to that rail (1.0 m away): R_moving = 60 × (12 - 1) / 12 = 55 kN.\n3. The self-weight of the crane bridge (100 kN) is uniformly distributed, contributing a constant reaction of 100 / 2 = 50 kN to each side.\n4. Total maximum static load on one side gantry rail = 55 + 50 = 105 kN.\n5. Since there are two wheels per side over which this load is shared, the maximum static wheel load = 105 / 2 = 52.5 kN."
+  },
+  {
+    "q": "In a plate girder subjected to a maximum bending moment of 200 kN·m, the width and thickness of each flange plate are specified as 200 mm and 10 mm respectively. Assuming that the entire bending moment is resisted solely by the flanges, what is the required economical depth of the girder? [Take f_y = 250 MPa]",
+    "options": ["800 mm", "400 mm", "500 mm", "700 mm"],
+    "answer": 1,
+    "solution": "1. Total cross-sectional area of one flange plate, A_f = 200 mm × 10 mm = 2000 mm².\n2. Bending moment M = 200 kN·m = 200 × 10⁶ N·mm.\n3. Assuming the moment is resisted by the flanges only, M = A_f × f_y × d, where d is the depth of the girder.\n4. Substituting values: 200 × 10⁶ = 2000 × 250 × d\n5. d = 200 × 10⁶ / 500,000 = 400 mm."
+  },
+  {
+    "q": "A simply supported monorail crane beam carries a central live load point load equal to its crane capacity of 20 kN over a span of 6 m. If the flexural rigidity of the selected structural steel section is EI = 10¹² N·mm² and self-weight deflection is neglected, what is the maximum deflection of the beam under this load?",
+    "options": ["6 mm", "9 mm", "12 mm", "18 mm"],
+    "answer": 1,
+    "solution": "1. Convert parameters to standard units: Load P = 20 kN = 20,000 N; Span L = 6 m = 6000 mm.\n2. The maximum deflection for a simply supported beam under a central point load is given by the formula: δ = (P * L³) / (48 * EI).\n3. Substituting the values: δ = (20,000 × 6000³) / (48 × 10¹²) = (20,000 × 216 × 10⁹) / (48 × 10¹²).\n4. δ = 4.32 × 10¹³ / 48 × 10¹² = 43.2 / 4.8 = 9 mm."
+  },
+  {
+    "q": "A structural tie bar with a cross-section of 50 mm × 8 mm is designed to carry an axial tensile working load of 80 kN. A small specimen of the same quality steel with a cross-sectional area of 250 mm² is tested to failure in a laboratory and carries a maximum ultimate load of 125 kN. What is the actual factor of safety incorporated into this tie bar design?",
+    "options": ["3.0", "2.5", "2.0", "1.5"],
+    "answer": 1,
+    "solution": "1. Calculate the ultimate tensile strength (f_u) of the material from the specimen: f_u = Ultimate Load / Specimen Area = 125,000 N / 250 mm² = 500 N/mm².\n2. Calculate the gross cross-sectional area of the actual tie bar: A = 50 mm × 8 mm = 400 mm².\n3. Calculate the working tensile stress developed in the tie bar: σ_working = Working Load / Tie Bar Area = 80,000 N / 400 mm² = 200 N/mm².\n4. Factor of Safety = Ultimate Strength / Working Stress = 500 / 200 = 2.5."
+  },
+  {
+    "q": "A steel channel section is placed in an inclined position at an angle of 30° to the horizontal to serve as a structural purlin. If the channel is subjected to a vertical gravitational loading that produces a total bending moment 'M' in the vertical plane of loading, what is the resulting component of the bending moment acting about the major principal axis (M_xx) of the section?",
+    "options": ["(√3 / 2) M", "1/2 M", "(1 / √2) M", "2 M"],
+    "answer": 0,
+    "solution": "1. The plane of loading is vertical, and the major axis (XX-axis) of the channel lies at an angle matching the roof inclination relative to this plane.\n2. Resolving the vertical bending moment M into components parallel and perpendicular to the principal axes of the channel, the component acting about the major axis XX is given by M_xx = M cos(30°).\n3. Since cos(30°) = √3 / 2, the moment component is (√3 / 2) M."
+  },
+  {
+    "q": "At a specific location of a structural plate girder with a web plate size of 1000 mm × 10 mm, a pair of symmetric bearing stiffeners of size 100 mm × 5 mm is welded to the web. According to standard specifications, the effective area of this bearing assembly as a compression column is determined by including a central web strip of 20 times the web thickness. What is the total effective area of this assembly?",
+    "options": ["1000 mm²", "2000 mm²", "3000 mm²", "5000 mm²"],
+    "answer": 2,
+    "solution": "1. Area of the pair of steel stiffener plates = 2 × (100 mm × 5 mm) = 1000 mm².\n2. According to standard specifications, a core web strip length equal to 20 times the web thickness (t_w) acts as part of the effective column area.\n3. Area of the effective web strip included = 20 × t_w × t_w = 20 × 10 mm × 10 mm = 2000 mm².\n4. Total effective area of the bearing assembly = Area of stiffeners + Area of the web strip = 1000 + 2000 = 3000 mm²."
+  }
             ]
         };
 
