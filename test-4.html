@@ -1,4 +1,4 @@
-#<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -275,6 +275,83 @@
     "options": ["14.5%", "18.5%", "9.0%", "26.5%"],
     "answer": 2,
     "solution": "1. Non-productive time portion = 60% of the total effort.\n2. Proportion of total wastage eliminated by the new methods = 15% of this non-productive time portion = 0.15 × 60% = 9.0%.\n3. Since labor costs scale linearly with man-month resource consumption, eliminating 9.0% of the total resource waste results in an immediate financial saving of 9.0% of the labor production cost."
+  },
+  {
+    "q": "A cantilever steel beam of 3 m span carries a uniformly distributed load of 20 kN/m inclusive of self-weight. The beam comprises an ISLB 200 section having a flange width of 100 mm, a flange thickness of 7.3 mm, a web thickness of 5.4 mm, I_xx = 1696.6 cm⁴, and I_yy = 115.4 cm⁴. The maximum bending and shear stresses in the beam are respectively:",
+    "options": [
+      "530.47 N/mm² and 55.55 N/mm²",
+      "3899.48 N/mm² and 82.19 N/mm²",
+      "132.62 N/mm² and 27.78 N/mm²",
+      "1949.74 N/mm² and 41.10 N/mm²"
+    ],
+    "answer": 0,
+    "solution": "1. Maximum Bending Moment at the fixed support: M = (w * L²) / 2 = (20 * 3²) / 2 = 90 kN·m = 90 × 10⁶ N·mm.\n2. Maximum Bending Stress: σ = M / Z_xx = M * y_max / I_xx = (90 × 10⁶ * 100) / (1696.6 × 10⁴) = 530.47 N/mm².\n3. Maximum Shear Force at the support: V = w * L = 20 * 3 = 60 kN = 60 × 10³ N.\n4. Average Shear Stress across the web: τ = V / (h * t_w) = (60 × 10³) / (200 * 5.4) = 55.55 N/mm²."
+  },
+  {
+    "q": "For a structural steel I-beam, the plastic shape factor is 1.12 and the conventional factor of safety in bending is 1.5. If the allowable working stress is increased by 20% to account for transient wind and earthquake load combinations, the corresponding plastic load factor is:",
+    "options": [
+      "1.10",
+      "1.25",
+      "1.35",
+      "1.40"
+    ],
+    "answer": 3,
+    "solution": "1. The basic relationship for load factor is: Load Factor = Shape Factor × Factor of Safety.\n2. When the allowable stress is increased by 20% for wind/earthquake actions, the effective working Factor of Safety is reduced: FOS_effective = 1.5 / 1.20 = 1.25.\n3. Therefore, the modified plastic load factor = 1.12 × 1.25 = 1.40."
+  },
+  {
+    "q": "A compound column has been fabricated with 4 angles of ISA 50 × 50 × 6 placed at the four corners of a square tracking 300 mm × 300 mm. The radius of gyration of an individual angle component is 10 mm. If the total fabricated compound column has an overall slenderness ratio of 40, what is the maximum permissible distance between the lacing bar attachments along the column to avoid local component buckling?",
+    "options": [
+      "500 mm",
+      "400 mm",
+      "300 mm",
+      "280 mm"
+    ],
+    "answer": 3,
+    "solution": "1. According to design specifications for laced built-up columns, the local slenderness ratio of the component elements (L_c / r_min) must not exceed 50 or 0.7 times the maximum overall slenderness ratio of the compound member, whichever is smaller.\n2. Given overall slenderness ratio = 40. The limit is 0.7 × 40 = 28.\n3. Since 28 < 50, the governing criteria is L_c / r_min ≤ 28.\n4. Given r_min = 10 mm, the maximum spacing between lacing bar attachments is L_c = 28 × 10 mm = 280 mm."
+  },
+  {
+    "q": "Two ISMC 400 channels are placed back-to-back at a clear spacing of 26 cm to function as a compound compression column. The column carries a total axial factored design load of 100 tonnes. The single or double lacing system provided to connect these channels must be explicitly designed to resist an internal transverse shear force of:",
+    "options": [
+      "16 tonnes",
+      "12 tonnes",
+      "8 tonnes",
+      "2.5 tonnes"
+    ],
+    "answer": 3,
+    "solution": "1. Standard rules specify that the lacing system of a built-up column must be safely designed to resist a transverse shear force equal to 2.5% of the total axial compressive load acting on the column.\n2. Given Column Axial Load = 100 tonnes.\n3. Required Transverse Shear Capacity = 2.5% of 100 tonnes = 0.025 × 100 = 2.5 tonnes."
+  },
+  {
+    "q": "In a built-up structural column connected by flat lacing bars, the minimum width of the lacing bars provided when using standard 20 mm nominal diameter structural rivets or bolts is:",
+    "options": [
+      "65 mm",
+      "60 mm",
+      "55 mm",
+      "50 mm"
+    ],
+    "answer": 1,
+    "solution": "1. Engineering standards specify that the minimum nominal width of a flat lacing bar must be approximately equal to 3 times the nominal diameter of the connecting end fastener (rivet or bolt).\n2. Given nominal diameter of the rivet d = 20 mm.\n3. Minimum width of lacing flat = 3 × 20 mm = 60 mm."
+  },
+  {
+    "q": "An electric distribution line pole 5 m high is permanently fixed into a concrete block foundation at its bottom. It carries a transmission wire at its top end and is completely free to move sideways or sway. The effective design length of this compression pole is:",
+    "options": [
+      "3.25 m",
+      "4.0 m",
+      "5.0 m",
+      "10.0 m"
+    ],
+    "answer": 3,
+    "solution": "1. The electric pole structural configuration corresponds to a cantilever column: fixed at one end (base) and entirely free at the other end (top).\n2. The theoretical effective length factor for a cantilever member is 2.0L.\n3. Given actual length L = 5 m, the effective length = 2.0 × 5 m = 10.0 m."
+  },
+  {
+    "q": "To account for additional shear deformations and distortions occurring across the cross-sections of battened built-up columns, standard code provisions mandate that the maximum actual slenderness ratio of the column must be multiplied by a modification factor of:",
+    "options": [
+      "1.10",
+      "2.50",
+      "1.25",
+      "0.90"
+    ],
+    "answer": 0,
+    "solution": "1. Battened built-up compression members are more flexible in shear compared to solid or laced profiles.\n2. To compensate safely for this shear deformation in calculations, design criteria state that the effective slenderness ratio of battened columns shall be taken as 1.1 times the maximum actual slenderness ratio."
   }
             ]
         };
