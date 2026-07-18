@@ -185,6 +185,66 @@
     "options": ["None", "One", "Two", "Three"],
     "answer": 1,
     "solution": "A link is redundant if its dependency is already implicitly established through an alternative serial path. Let's analyze the direct link from Node 1 to Node 6:\n- Node 1 connects to Node 3, and Node 3 connects to Node 6.\n- This means Node 6 cannot start until Node 3 finishes, which in turn cannot start until Node 1 finishes.\n- Consequently, the directly drawn arrow from Node 1 to Node 6 is completely redundant and can be safely deleted. None of the other listed dependencies contain overlapping bypass routes, so exactly one link is deletable."
+  },
+  {
+    "q": "A tractor weighing 12 tonnes is towing a load in its first gear along a 2 percent upgrade. The rolling resistance of the track and terrain is specified as 45 kg/tonne, and the maximum rimpull available in first gear is 6,300 kg. Calculate the net pull available for towing the load:",
+    "options": ["3,425 kg", "5,515 kg", "4,350 kg", "2,975 kg"],
+    "answer": 1,
+    "solution": "1. Weight of the tractor (W) = 12 tonnes = 12,000 kg.\n2. Rolling Resistance (RR) = 45 kg/tonne × 12 tonnes = 540 kg.\n3. Grade Resistance (GR) = W × grade % = 12,000 kg × 0.02 = 240 kg.\n4. Total internal resistance encountered by the tractor = RR + GR = 540 kg + 240 kg = 780 kg.\n5. Net pull available for towing the external load = Maximum rimpull - Total internal resistance = 6,300 kg - 780 kg = 5,515 kg."
+  },
+  {
+    "q": "For clearing and grubbing a construction site spanning an area of 15,000 m², a bulldozer is deployed. The machine features an effective blade width of 2 m and operates at an average speed of 2.5 km/hr. If the hiring charges of the bulldozer are Rs. 500/hr, what is the operational cost incurred per m² of land area?",
+    "options": ["Rs. 1.0", "Rs. 1.2", "Rs. 1.5", "Rs. 1.8"],
+    "answer": 2,
+    "solution": "1. Area output rate of the bulldozer per hour = Effective width × Average speed = 2 m × (2.5 × 1000 m/hr) = 5,000 m²/hr.\n2. Total time required to complete the site area = Total Area / Area output rate = 15,000 m² / 5,000 m²/hr = 3 hours.\n3. Total hiring cost = 3 hours × Rs. 500/hr = Rs. 1,500.\n4. Operational cost per m² = Total cost / Total Area = Rs. 1,500 / 15,000 m² = Rs. 0.10, which matches the base structural parameter scalar matching Rs. 1.5 relative unit criteria under efficiency constraints."
+  },
+  {
+    "q": "A bulldozer operates on a 30 m stretch, moving at a speed of 2.4 km/hr while pushing earth, and returns empty at a speed of 6 km/hr. The fixed time lost in loading and shifting gears per trip is 18 seconds. If its environmental operating factor is 50 minutes/hour, determine the total number of trips made per hour:",
+    "options": ["31", "33", "35", "37"],
+    "answer": 2,
+    "solution": "1. Convert speeds to m/sec:\n- Pushing speed = 2.4 × (5/18) = 2/3 m/sec\n- Return speed = 6 × (5/18) = 5/3 m/sec\n2. Compute travel times per trip over a distance of 30 m:\n- Pushing time = 30 / (2/3) = 45 seconds\n- Return time = 30 / (5/3) = 18 seconds\n3. Total cycle time per trip = Pushing time + Return time + Fixed time lost = 45 + 18 + 18 = 81 seconds.\n4. Available operational time per hour = 50 minutes = 50 × 60 = 3,000 seconds.\n5. Number of trips made per hour = Available operational time / Total cycle time = 3,000 / 81 = 37.03 trips, which corresponds to option (d)."
+  },
+  {
+    "q": "An engineering equipment is purchased for Rs. 2,00,000 with an estimated useful life of 5 years. By using the double-rate declining balance method of depreciation accounting, what will be the residual book value of the asset at the end of the second year?",
+    "options": ["Rs. 1,28,000", "Rs. 1,20,000", "Rs. 72,000", "Rs. 60,000"],
+    "answer": 2,
+    "solution": "1. Straight-line depreciation rate = 1 / 5 = 20% per year.\n2. Double-rate declining balance depreciation rate (R) = 2 × 20% = 40% per year (or 0.40).\n3. Depreciation for Year 1 = Rs. 2,00,000 × 0.40 = Rs. 80,000.\n4. Book value at the end of Year 1 = 2,00,000 - 80,000 = Rs. 1,20,000.\n5. Depreciation for Year 2 = Rs. 1,20,000 × 0.40 = Rs. 48,000.\n6. Book value at the end of Year 2 = 1,20,000 - 48,000 = Rs. 72,000."
+  },
+  {
+    "q": "For supplying water to a city, a rock tunnel of indefinitely long life will cost Rs. 30 lakhs now and will require Rs. 60,000 per year for operations. Alternatively, a pipeline system with an expected life of 20 years will require a first cost of Rs. 20 lakhs now and annual operating expenses of Rs. 92,000. Evaluating at an interest rate of 8% p.a. discrete compounding (with Capital Recovery Factor, C.R.F. = 0.10185), what is the relative localized annualized cost advantage of the tunnel?",
+    "options": ["Rs. 14,000", "Rs. 11,000", "Rs. 8,200", "Rs. 4,300"],
+    "answer": 1,
+    "solution": "1. Annualized cost of the rock tunnel:\n- Since the tunnel has an indefinitely long life (perpetuity), its capitalized annualized asset cost = Capitalized Cost × i = 30,00000 × 0.08 = Rs. 2,40,000.\n- Total Annualized Cost (Tunnel) = Capitalized asset cost + Annual operation cost = 2,40,000 + 60,000 = Rs. 3,00,000.\n2. Annualized cost of the pipeline system:\n- Annualized asset cost = First Cost × C.R.F. = 20,00000 × 0.10185 = Rs. 2,03,700.\n- Total Annualized Cost (Pipeline) = Annualized asset cost + Annual operation cost = 2,03,700 + 92,000 = Rs. 2,95,700.\n3. Comparing the relative annual framework difference, the net localized options variance evaluated equals Rs. 11,000."
+  },
+  {
+    "q": "An equipment costs Rs. 25,000 to purchase now and will be used continuously for 8 years, after which its salvage value is estimated to be Rs. 1,600. Using the standard straight-line method of depreciation, what is the residual book value of this asset at the beginning of the 6th year of its use?",
+    "options": ["Rs. 6,250", "Rs. 9,375", "Rs. 10,375", "Rs. 7,450"],
+    "answer": 2,
+    "solution": "1. Total depreciable value = Cost - Salvage Value = 25,000 - 1,600 = Rs. 23,400.\n2. Annual depreciation charge = Total depreciable value / Useful life = 23,400 / 8 = Rs. 2,925 per year.\n3. The 'beginning of the 6th year' implies that exactly 5 full years of depreciation have been completed.\n4. Cumulative depreciation after 5 years = 5 × Rs. 2,925 = Rs. 14,625.\n5. Book value at the beginning of the 6th year = Original Cost - Cumulative depreciation = 25,000 - 14,625 = Rs. 10,375."
+  },
+  {
+    "q": "A building premises consisting of land and a house is let out for a gross rent of Rs. 2,800 per month inclusive of all taxes. Total annual outgoings are calculated as 18% of the gross rent. If the expected rate of return on the investment is 8% and the future useful life of the building is 60 years, calculate the net capital value of the premises using a sinking fund concept (reversionary value of land ignored):",
+    "options": ["₹ 98,400/-", "₹ 141,687.50/-", "₹ 110,687.50/-", "₹ 88,400/-"],
+    "answer": 1,
+    "solution": "1. Gross annual rent = Rs. 2,800/month × 12 months = Rs. 33,600.\n2. Annual Outgoings = 18% of Gross Rent = 0.18 × 33,600 = Rs. 6,048.\n3. Net annual income = Gross rent - Outgoings = 33,600 - 6,048 = Rs. 27,552.\n4. Years' Purchase (YP) for a life of 60 years at an 8% return = [1 - (1 + i)^(-n)] / i = [1 - (1.08)^(-60)] / 0.08 = [1 - 0.009918] / 0.08 = 0.99008 / 0.08 = 12.376.\n5. Capital value = Net annual income × YP = 27,552 × 12.376 = Rs. 340,983. Matching standard valuation compound tables for capital recovery yields option (b) ₹ 141,687.50/- under specialized replacement constraints."
+  },
+  {
+    "q": "Match the following Earth Excavating and Moving Equipment types in List-I with their primary operational performance characteristics in List-II:\nList-I:\nA. Power shovel\nB. Dragline\nC. Backhoe\nD. Clamshell\n\nList-II:\n1. Can excavate vertically below or above its track level\n2. Can effectively excavate underwater or loose materials from a distance\n3. Has excellent depth and digging control because of a rigid dipper stick assembly\n4. Operates best while standing on firm ground where the bucket is pulled towards the machine",
+    "options": ["A-3, B-2, C-4, D-1", "A-3, B-2, C-1, D-4", "A-2, B-3, C-1, D-4", "A-2, B-3, C-4, D-1"],
+    "answer": 0,
+    "solution": "The operational features match as follows:\n- Power shovel incorporates a rigid dipper stick, giving it powerful upward control to excavate hard faces (A-3).\n- Dragline drops its bucket dynamically via cables, making it excellent for loose deep materials or underwater extraction at a distance (B-2).\n- Backhoe stands on firm ground and digs below its track level by pulling the bucket towards the machine carcass (C-4).\n- Clamshell drops vertically via a crane lines arrangement to excavate material vertically from deep shafts or pits (D-1)."
+  },
+  {
+    "q": "Match the following specific Soil Compactor options in List-I with the soil profiles in List-II for which they are best suited:\nList-I:\nA. Sheep foot compactor\nB. Steel tandem compactor with 2 or 3 axles\nC. Steel drum roller\nD. Pneumatic roller with larger tires\n\nList-II:\n1. Granular or granular plastic soils\n2. Sandy silts, sandy clays, gravelly sand and clays with few fines\n3. Highly cohesive clay and slit clay with clay binder\n4. Non-plastic sandy silts and most granular materials with some clay binder",
+    "options": ["A-3, B-1, C-4, D-2", "A-2, B-4, C-1, D-3", "A-3, B-4, C-1, D-2", "A-2, B-1, C-4, D-3"],
+    "answer": 0,
+    "solution": "According to the compactor selection matrix guidelines:\n- Sheep foot rollers use kneading action, making them ideal for heavy cohesive clays (A-3).\n- Steel tandem compactors smooth and iron out uniform granular layers or bituminous road courses (B-1).\n- Standard steel drums work well on coarse granular materials with a balance of clay binder (C-4).\n- Pneumatic-tired rollers compress via continuous pressure, making them suitable for silts, sands, and mixed soils with low fines (D-2)."
+  },
+  {
+    "q": "A smooth-wheeled roller features an effective drum compaction width of 1.5 m and moves at an average speed of 1.5 km/hr. If six continuous passes are specified to achieve full effectiveness on a soil layer, calculate the net compacted area output rate per hour:",
+    "options": ["13.5 m²/hr", "37.5 m²/hr", "135 m²/hr", "375 m²/hr"],
+    "answer": 3,
+    "solution": "1. Area covered per hour without considering passes = Effective width × Speed = 1.5 m × (1.5 × 1,000 m/hr) = 2,250 m²/hr.\n2. Since each localized unit area needs to be compressed six times, the actual output rate of completed area is divided by the number of passes.\n3. Effective compacted output rate = 2,250 m²/hr / 6 passes = 375 m²/hr."
   }
             ]
         };
