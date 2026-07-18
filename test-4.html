@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test 3 - Weekly Mock Test</title>
+    <title>Test 4 - Weekly Mock Test</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .container { width: 80%; margin: auto; }
@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 id="testTitle">Test 3</h2>
+        <h2 id="testTitle">Test 4</h2>
         <form id="gateTestForm">
             <div id="questionsContainer"></div>
             <button type="button" class="submit-btn" onclick="calculateScore()">Submit</button>
@@ -30,12 +30,12 @@
         // Function to get test number from URL, defaulting to test 3
         function getTestNumber() {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get("test") || "3"; 
+            return urlParams.get("test") || "4"; 
         }
 
         // Define questions for different tests
         const allTests = {
-            "3": [
+            "4": [
                 {
                     "q": "Which of the following instruments is correctly matched with the hydrologic phase or component it is used to measure?",
                     "options": ["Ombrometer - Transpiration", "Lysimeter - Evapotranspiration", "Atmometer - Capillary potential", "Phytometer - Rainfall depth"],
@@ -400,7 +400,7 @@
         };
 
         const testNumber = getTestNumber();
-        const questions = allTests[testNumber] || allTests["3"]; 
+        const questions = allTests[testNumber] || allTests["4"]; 
 
         document.getElementById("testTitle").innerText = `Test ${testNumber}`;
 
