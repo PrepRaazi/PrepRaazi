@@ -480,5 +480,173 @@
             }).catch(err => console.error("Data submission log error: ", err));
         }
     </script>
+    <script>
+	// ==========================================
+// PREPRAAZI AUTOMATED EXAM CONTROLLER MODULE
+// ==========================================
+(function() {
+    // 1. Inject the Sticky Timer Header CSS Styles Dynamically
+    const styles = `
+        body { padding-top: 70px !important; }
+        .test-header-bar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+            background-color: #003366; color: white; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 0 40px; box-sizing: border-box; z-index: 9999;
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.1); font-family: Arial, sans-serif;
+        }
+        .test-header-bar h2 { margin: 0; font-size: 1.3rem; }
+        .timer-display {
+            background-color: #ffcc00; color: #000; padding: 8px 16px;
+            font-weight: bold; border-radius: 5px; font-size: 1.1rem;
+        }
+    `;
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+
+    // 2. Inject the HTML Header Element Dynamically
+    const currentTestNum = (typeof getTestNumber === "function") ? getTestNumber() : "1";
+    const headerBar = document.createElement("div");
+    headerBar.className = "test-header-bar";
+    headerBar.innerHTML = `
+        <h2>ESE Test Arena — Test ${currentTestNum}</h2>
+        <div class="timer-display" id="dynamicTimerBox">Time Remaining: --:--</div>
+    `;
+    document.body.insertBefore(headerBar, document.body.firstChild);
+
+    // 3. Initialize Global Tracking Flags and Time Metrics
+    let timerInterval;
+    let isExamSubmitted = false;
+    let totalExamDurationSeconds = 0;
+    let timeRemainingSeconds = 0;
+
+    // 4. Set Up the Countdown Mechanism (Total Questions + 10 Minutes)
+    function initTimer() {
+        if (typeof questions === "undefined" || !Array.isArray(questions)) {
+            console.error("PrepRaazi Engine Error: 'questions' array data block not located.");
+            return;
+        }
+
+        const durationInMinutes = questions.length + 10;
+        totalExamDurationSeconds = durationInMinutes * 60;
+        timeRemainingSeconds = totalExamDurationSeconds;
+        
+        const timerBox = document.getElementById("dynamicTimerBox");
+
+        timerInterval = setInterval(() => {
+            if (timeRemainingSeconds <= 0) {
+                clearInterval(timerInterval);
+                timerBox.innerText = "Time Expired!";
+                timerBox.style.backgroundColor = "#dc3545";
+                timerBox.style.color = "white";
+                processExamResults(true); 
+            } else {
+                timeRemainingSeconds--;
+                let mins = Math.floor(timeRemainingSeconds / 60);
+                let secs = timeRemainingSeconds % 60;
+                timerBox.innerText = `Time Remaining: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+    }
+
+    // Run timer initialization immediately or after DOM loads
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTimer);
+    } else {
+        initTimer();
+    }
+
+    // 5. Expose the submission function globally to override the button's onclick directly
+    window.calculateScore = function() {
+        if (isExamSubmitted) return;
+        processExamResults(false);
+    };
+
+    function processExamResults(isTimeOutTrigger) {
+        if (isExamSubmitted) return;
+        isExamSubmitted = true;
+        clearInterval(timerInterval);
+
+        // Calculate Exact Time Taken
+        let elapsedSeconds = totalExamDurationSeconds - timeRemainingSeconds;
+        let takenMins = Math.floor(elapsedSeconds / 60);
+        let takenSecs = elapsedSeconds % 60;
+        let timeTakenString = `${takenMins}m ${takenSecs}s`;
+
+        // Update timer box display status text
+        const timerBox = document.getElementById("dynamicTimerBox");
+        if (timerBox && !isTimeOutTrigger) {
+            timerBox.innerText = "Exam Completed";
+            timerBox.style.backgroundColor = "#28a745";
+            timerBox.style.color = "white";
+        }
+
+        // Lock all inputs globally
+        document.querySelectorAll("input[type='radio']").forEach(i => i.disabled = true);
+        const submitBtn = document.querySelector(".submit-btn") || document.getElementById("mainSubmitBtn");
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.5";
+            submitBtn.style.cursor = "not-allowed";
+        }
+
+        let score = 0, attempted = 0, correct = 0, incorrect = 0, unattempted = 0;
+
+        questions.forEach((item, index) => {
+            let selected = document.querySelector(`input[name='q${index}']:checked`);
+            if (!selected) {
+                unattempted++;
+            } else {
+                attempted++;
+                if (parseInt(selected.value) === item.answer) {
+                    correct++;
+                    score += 2;
+                } else {
+                    incorrect++;
+                    score -= 2 / 3;
+                }
+            }
+            const solBox = document.getElementById(`sol${index}`);
+            if (solBox) solBox.style.display = "block"; 
+        });
+
+        const resultBox = document.getElementById("resultBox");
+        if (resultBox) {
+            resultBox.innerHTML = `
+                <h3 style="color:#003366; margin-top:0;">${isTimeOutTrigger ? '⏱️ Time up! Exam Auto-Submitted.' : '📊 Exam Evaluation Summary'}</h3>
+                <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
+                <p><strong>Time Taken:</strong> ${timeTakenString}</p>
+                <p><strong>Attempted:</strong> ${attempted}</p>
+                <p><strong>Correct:</strong> ${correct}</p>
+                <p><strong>Incorrect:</strong> ${incorrect}</p>
+                <p><strong>Unattempted:</strong> ${unattempted}</p>
+            `;
+            resultBox.style.display = "block";
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Prompt for student identity
+        let candidateName = prompt("Exam finished! Please enter your name/roll number to record your scorecard:") || "Anonymous Student";
+        let testTitleName = `Test ${currentTestNum}`;
+
+        const REPORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScVZINgA2CA0bMlA6Q6zrceaJ6MrkbQAgSHyckCU3tcnm5XSw/formResponse";
+
+        let formData = new FormData();
+        formData.append("entry.1055773345", candidateName);  
+        formData.append("entry.1376015284", testTitleName);   
+        formData.append("entry.2081767486", score.toFixed(2));      
+        formData.append("entry.1028667235", `Time Taken: ${timeTakenString} | Attempted: ${attempted} | Correct: ${correct} | Incorrect: ${incorrect}`);
+
+        fetch(REPORT_FORM_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: formData
+        }).then(() => {
+            alert("Your report card has been successfully submitted to the instructor dashboard!");
+        }).catch(err => console.error("Data submission log error: ", err));
+    }
+})();
+</script>
 </body>
 </html>
