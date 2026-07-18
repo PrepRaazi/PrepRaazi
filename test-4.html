@@ -155,6 +155,36 @@
     "options": ["A-3, B-1, C-4, D-2", "A-3, B-4, C-1, D-2", "A-2, B-1, C-4, D-3", "A-1, B-3, C-2, D-4"],
     "answer": 0,
     "solution": "The correct pairings match basic CPM time metrics:\n• Total Float represents the maximum allowable delay without extending project duration: LET_head - EET_tail - duration (A-3).\n• Free Float represents the delay possible without affecting any immediate successor: EET_successor - EET_current - duration (B-1).\n• Independent Float represents float independent of preceding or succeeding delays: EET_head - LET_tail - duration (C-4).\n• Interference Float is the difference between total float and free float, which represents the part of float that delays successor milestones: TF - FF (D-2)."
+  },
+  {
+    "q": "Three sequential activities P, Q, and R form a project network. The direct cost associated with each feasible activity duration is given below:\n• Activity P: 7 days (Rs. 12,000), 6 days (Rs. 14,000), 5 days (Rs. 17,000)\n• Activity Q: 8 days (Rs. 20,000), 7 days (Rs. 23,000), 6 days (Rs. 27,000)\n• Activity R: 9 days (Rs. 40,000), 8 days (Rs. 42,000), 7 days (Rs. 45,000)\nWhat will be the minimum possible total direct cost for a crashed project duration of exactly 21 days?",
+    "options": ["Rs. 81,000", "Rs. 79,000", "Rs. 78,000", "Rs. 77,000"],
+    "answer": 1,
+    "solution": "1. Normal un-crushed duration = 7 (P) + 8 (Q) + 9 (R) = 24 days. Normal Cost = 12 + 20 + 40 = Rs. 72,000.\n2. Compute the cost slopes for each compression stage:\n- P (7 to 6 days): Cost slope = (14 - 12) / 1 = 2\n- P (6 to 5 days): Cost slope = (17 - 14) / 1 = 3\n- Q (8 to 7 days): Cost slope = (23 - 20) / 1 = 3\n- Q (7 to 6 days): Cost slope = (27 - 23) / 1 = 4\n- R (9 to 8 days): Cost slope = (42 - 40) / 1 = 2\n- R (8 to 7 days): Cost slope = (45 - 42) / 1 = 3\n3. To reduce the total duration by 3 days (from 24 to 21 days), select the activities with the lowest cost slopes sequentially:\n- Crash R by 1 day (9 to 8 days): cost increases by 2 (Total cost = 74, Duration = 23 days)\n- Crash P by 1 day (7 to 6 days): cost increases by 2 (Total cost = 76, Duration = 22 days)\n- Crash R by another 1 day (8 to 7 days): cost increases by 3 (Total cost = 79, Duration = 21 days)\nThus, the minimum direct cost is Rs. 79,000."
+  },
+  {
+    "q": "Three activities P, Q, and R are executed in series. The relationship between duration (T in days) and corresponding total direct cost (C in monetary units) for each alternative option is tabulated below:\n• P: [T=8, C=250], [T=9, C=235], [T=10, C=225], [T=11, C=215]\n• Q: [T=6, C=340], [T=7, C=320], [T=8, C=295], [T=9, C=275]\n• R: [T=8, C=400], [T=10, C=375], [T=12, C=350]\nFor a targeted total project duration of 25 days, the absolute minimum total direct cost will be:",
+    "options": ["965 units", "950 units", "940 units", "925 units"],
+    "answer": 3,
+    "solution": "1. Normal un-crushed duration = 11 (P) + 9 (Q) + 12 (R) = 32 days. Normal Cost = 215 + 275 + 350 = 840 units.\n2. Determine cost slopes per day of reduction:\n- P: 10 units/day (from 11 to 9 days), then 15 units/day (from 9 to 8 days).\n- Q: 20 units/day (from 9 to 8 days), 25 units/day (from 8 to 7 days), 20 units/day (from 7 to 6 days).\n- R: 12.5 units/day (from 12 to 10 days, and from 10 to 8 days).\n3. Compress the project by 7 days (from 32 to 25 days) using the most economical options:\n- Crash P by 3 days (from 11 to 8 days): Cost increases by (10 + 10 + 15) = 35 units.\n- Crash R by 4 days (from 12 to 8 days): Cost increases by (12.5 × 4) = 50 units.\n4. Total combined duration = 8 (P) + 9 (Q) + 8 (R) = 25 days. Minimum total cost = 840 + 35 + 50 = 925 units."
+  },
+  {
+    "q": "An updating status report contains data on four overlapping activities A, B, C, and D with their schedules and weekly resource demands specified as follows:\n• Activity A: Starts at week 9, Ends at week 16, Resources needed = 6 per week\n• Activity B: Starts at week 11, Ends at week 20, Resources needed = 4 per week\n• Activity C: Starts at week 15, Ends at week 22, Resources needed = 3 per week\n• Activity D: Starts at week 13, Ends at week 24, Resources needed = 7 per week\nWhat will be the maximum total resource load encountered in any single week?",
+    "options": ["20", "17", "16", "14"],
+    "answer": 0,
+    "solution": "Analyze the overlapping load timelines week-by-week:\n- Weeks 9–11: Only A is active = 6\n- Weeks 11–13: A + B are active = 6 + 4 = 10\n- Weeks 13–15: A + B + D are active = 6 + 4 + 7 = 17\n- Weeks 15–16: A + B + C + D are all active simultaneously = 6 + 4 + 3 + 7 = 20\n- Weeks 16–20: B + C + D are active = 4 + 3 + 7 = 14\n- Weeks 20–22: C + D are active = 3 + 7 = 10\n- Weeks 22–24: Only D is active = 7\nTherefore, the maximum total resource peak occurs between weeks 15 and 16 with a load of 20."
+  },
+  {
+    "q": "A small project consists of seven activities scheduled in an Activity-on-Node (A-O-N) network. The durations and immediate predecessor relationships are as follows:\n• Activity A (8 days): No predecessor\n• Activity B (10 days): Predecessor is A\n• Activity C (6 days): Predecessor is A\n• Activity D (12 days): Predecessors are B and C\n• Activity E (7 days): Predecessor is B\n• Activity F (16 days): Predecessor is C\n• Activity G (9 days): Predecessors are E, D, and F\nWhat is the total project duration dictated by the critical path?",
+    "options": ["39 days", "35 days", "34 days", "41 days"],
+    "answer": 0,
+    "solution": "Compute the Earliest Finish (EF) times using a forward pass:\n- EF(A) = 8 days\n- EF(B) = 8 + 10 = 18 days\n- EF(C) = 8 + 6 = 14 days\n- EF(E) = 18 + 7 = 25 days\n- EF(D) = max[EF(B), EF(C)] + 12 = max[18, 14] + 12 = 18 + 12 = 30 days\n- EF(F) = 14 + 16 = 30 days\n- EF(G) = max[EF(E), EF(D), EF(F)] + 9 = max[25, 30, 30] + 9 = 30 + 9 = 39 days.\nThus, the total project duration is 39 days."
+  },
+  {
+    "q": "In an Activity-on-Node (A-O-N) project network, dependencies are mapped between activities. Node 1 is the starting activity and connects directly to Node 2, Node 3, and Node 4. Node 2 connects to Node 5. Node 3 connects to Node 5 and Node 6. Node 4 connects to Node 6. Node 5 and Node 6 both connect directly to the terminal Node 7. If a separate direct dependency arrow is also drawn from Node 1 to Node 6, how many total links are redundant and can be deleted without altering network logic?",
+    "options": ["None", "One", "Two", "Three"],
+    "answer": 1,
+    "solution": "A link is redundant if its dependency is already implicitly established through an alternative serial path. Let's analyze the direct link from Node 1 to Node 6:\n- Node 1 connects to Node 3, and Node 3 connects to Node 6.\n- This means Node 6 cannot start until Node 3 finishes, which in turn cannot start until Node 1 finishes.\n- Consequently, the directly drawn arrow from Node 1 to Node 6 is completely redundant and can be safely deleted. None of the other listed dependencies contain overlapping bypass routes, so exactly one link is deletable."
   }
             ]
         };
