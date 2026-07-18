@@ -36,366 +36,66 @@
         // Define questions for different tests
         const allTests = {
             "4": [
-                {
-                    "q": "Which of the following instruments is correctly matched with the hydrologic phase or component it is used to measure?",
-                    "options": ["Ombrometer - Transpiration", "Lysimeter - Evapotranspiration", "Atmometer - Capillary potential", "Phytometer - Rainfall depth"],
-                    "answer": 1,
-                    "solution": "According to the instruments list, an Ombrometer/Pluviometer measures rainfall depth, a Phytometer measures transpiration, an Atmometer measures evaporation, a Tensiometer measures capillary potential, and a Lysimeter measures evapotranspiration."
-                },
-                {
-                    "q": "According to Indian Standards (IS: 4987), what is the recommended raingauge network density specification for moderately elevated regions?",
-                    "options": ["1 station per 130 km²", "1 station per 520 km²", "1 station per 260 to 390 km²", "1 station per 1000 km²"],
-                    "answer": 2,
-                    "solution": "As per IS: 4987 guidelines, the recommended network densities are: 1 station per 520 km² for plains, 1 station per 260 to 390 km² for moderately elevated areas, and 1 station per 130 km² for hilly areas."
-                },
-                {
-                    "q": "In hydrologic record-keeping, the data analysis technique specifically used to detect and correct long-term inconsistencies in a station's rainfall records is the:",
-                    "options": ["Thiessen Polygon Method", "Horton's Exponential Decay Technique", "Penman's Combination Approach", "Double Mass Curve Technique"],
-                    "answer": 3,
-                    "solution": "The inconsistency of records (caused by station shifting, ecosystem changes, etc.) is identified and corrected using the double mass curve technique."
-                },
-                {
-                    "q": "Based on Dalton's law of evaporation and the environmental factors highlighted in the text, which of the following statements is true?",
-                    "options": ["Rate of evaporation increases with an increase in atmospheric pressure", "River water will show a lower rate of evaporation than sea water", "Deep water bodies show their highest rate of evaporation during the winter season", "Shallow water bodies show their highest rate of evaporation during the winter season"],
-                    "answer": 2,
-                    "solution": "For deep water bodies, the highest rate of evaporation occurs during the winter season, while shallow water bodies peak in summer. Evaporation increases as atmospheric pressure decreases, and fresh river water evaporates faster than saline sea water."
-                },
-                {
-                    "q": "Which average rainfall calculation method constructs weighted catchments by using perpendicular bisectors of lines joining adjacent raingauge stations?",
-                    "options": ["Arithmetic Mean Method", "Thiessen Polygon Method", "Isohyetal Method", "Moving Average Method"],
-                    "answer": 1,
-                    "solution": "The Thiessen Polygon method constructs polygons via the perpendicular bisector of the sides of triangles formed by joining adjacent raingauges with straight lines to determine weighted average area rainfall."
-                },
-                {
-                    "q": "Horton's equation models the exponential decay of infiltration capacity over time: $f_t = f_c + (f_0 - f_c)e^{-k_h \cdot t}$. Given an initial capacity $f_0 = 12\text{ mm/hr}$, a final steady-state capacity $f_c = 2\text{ mm/hr}$, and a decay constant $k_h = 0.5\text{ hr}^{-1}$, what is the infiltration capacity at $t = 2\text{ hours}$?",
-                    "options": ["5.68 mm/hr", "3.35 mm/hr", "7.00 mm/hr", "2.00 mm/hr"],
-                    "answer": 0,
-                    "solution": "Substituting the values into Horton's equation: f_t = 2 + (12 - 2) * e^(-0.5 * 2) = 2 + 10 * e^(-1) = 2 + 10 / 2.7183 = 5.68 mm/hr."
-                },
-                {
-                    "q": "Which of the following correctly describes the properties and relationships of the infiltration indices W-index and Phi-index?",
-                    "options": ["W-index is always greater than or equal to the Phi-index", "Phi-index is the average rainfall rate above which the rainfall volume equals the runoff volume", "W-index includes initial losses along with the total infiltration abstractions", "W-index is derived directly from a hydrograph without subtracting runoff volume"],
-                    "answer": 1,
-                    "solution": "The Phi-index is defined as the average rainfall rate above which the rainfall volume is equal to the runoff volume. The W-index refines this by separating initial losses (I_a) from total abstractions, meaning W-index is always less than the Phi-index."
-                },
-                {
-                    "q": "In plastic analysis theory, under fully plastic cross-sectional bending conditions, the neutral axis of the beam must coincide with which of the following?",
-                    "options": ["Centroidal axis", "Equal area axis", "Top extreme fiber", "Axis of maximum shear lag"],
-                    "answer": 1,
-                    "solution": "Under fully elastic conditions, the neutral axis coincides with the centroidal axis. However, under fully plastic bending conditions, force balance (Compression = Tension) dictates that the neutral axis must divide the section into equal halves, shifting to the equal area axis."
-                },
-                {
-                    "q": "The Shape Factor (S.F.) of a structural cross-section is defined by plastic analysis as the ratio of:",
-                    "options": ["Elastic section modulus to plastic section modulus", "Yield stress to ultimate tensile stress", "Plastic section modulus to elastic section modulus", "Collapse load to working load"],
-                    "answer": 2,
-                    "solution": "Shape factor represents the section's reserve strength and is calculated as S.F. = M_p / M_y = (f_y * Z_p) / (f_y * Z_e) = Z_p / Z_e, which is the plastic section modulus divided by the elastic section modulus."
-                },
-                {
-                    "q": "Which cross-section is correctly matched with its exact standard shape factor (S.F.) value derived under plastic bending?",
-                    "options": ["Rectangular section = 1.273", "Circular section = 1.500", "Diamond section = 2.000", "Triangular section = 1.697"],
-                    "answer": 2,
-                    "solution": "According to the shape factor derivations: Rectangular section = 1.5, Circular section = 1.697, Thin hollow shell = 1.273, Diamond section = 2.0, and Triangular section = 2.343."
-                },
-                {
-                    "q": "For a redundant structure with a degree of static indeterminacy equal to R, how many total plastic hinges must form to generate a complete collapse mechanism?",
-                    "options": ["R", "R - 1", "R + 1", "2R"],
-                    "answer": 2,
-                    "solution": "The number of plastic hinges required for complete collapse of a structure is equal to R + 1."
-                },
-                {
-                    "q": "In the span of a non-uniform or continuous beam, a plastic hinge will always form first at the cross-section subjected to the:",
-                    "options": ["Greatest cross-sectional area", "Greatest curvature", "Zero bending moment", "Maximum shear lag width"],
-                    "answer": 1,
-                    "solution": "In the span of a beam plastic hinge forms first at the section subjected to greatest curvature (not greatest B.M)."
-                },
-                {
-                    "q": "A uniform simply supported beam of span length L is subjected to a single concentrated point load at its midpoint. At collapse, what is the length of the plastic hinge zone ($L_p$)?",
-                    "options": ["L_p = L * (1 - S.F.)", "L_p = L * (1 - 1/S.F.)", "L_p = L * sqrt(1 - 1/S.F.)", "L_p = L * (1 - 1/S.F²)"],
-                    "answer": 1,
-                    "solution": "Using moment diagram criteria at collapse, the length of the plastic hinge for a central point loaded simply supported beam is derived as L_p = L * (1 - 1/S.F.)."
-                },
-                {
-                    "q": "Which theorem of plasticity states that a collapse load determined on the basis of any assumed mechanism is always greater than or equal to the true collapse load?",
-                    "options": ["Uniqueness Theorem", "Lower Bound (Static) Theorem", "Upper Bound (Kinematic) Theorem", "Shear Lag Theorem"],
-                    "answer": 2,
-                    "solution": "The Upper Bound Theorem (Kinematic method) states that a load determined by assuming a mechanism is always greater than or equal to the actual collapse load."
-                },
-                {
-                    "q": "Under the conventional Working Stress Method (WSM) provided in IS 800:1984, what are the permissible structural steel stresses for axial tension and bending respectively?",
-                    "options": ["0.60 f_y and 0.66 f_y", "0.66 f_y and 0.60 f_y", "0.40 f_y and 0.75 f_y", "0.75 f_y and 0.66 f_y"],
-                    "answer": 0,
-                    "solution": "According to the WSM permissible stresses table: Axial tension and compression are limited to 0.60 f_y, while bending stress is limited to 0.66 f_y."
-                },
-                {
-                    "q": "When wind or earthquake load combinations are factored into the Working Stress Method design, by what percentages are the permissible stresses increased for structural members and connections respectively?",
-                    "options": ["25% and 33.33%", "33.33% and 25%", "15% and 15%", "50% and 25%"],
-                    "answer": 1,
-                    "solution": "When the effect of wind or earthquake load is taken into account, the permissible stresses are increased by 33.33% for the design of structural members and 25% for the design of connections."
-                },
-                {
-                    "q": "For a structural steel joint designed with rivets, if the nominal diameter (d) of the rivet shank is 24 mm, what is the required gross diameter of the rivet hole ($d_0$)?",
-                    "options": ["24.0 mm", "25.0 mm", "25.5 mm", "26.0 mm"],
-                    "answer": 2,
-                    "solution": "The specification states that for a rivet size d ≤ 25 mm, the rivet hole size d_0 = d + 1.5 mm. Therefore, d_0 = 24 + 1.5 = 25.5 mm."
-                },
-                {
-                    "q": "According to the Limit State Method rules in IS 800:2007, what is the partial safety factor for material resistance governed by cross-section yielding ($\gamma_{m0}$)?",
-                    "options": ["1.10", "1.25", "1.50", "1.00"],
-                    "answer": 0,
-                    "solution": "The material partial safety factors table specifies that resistance governed by yielding ($\gamma_{m0}$) or buckling uses a factor of 1.10."
-                },
-                {
-                    "q": "A fillet weld with a nominal size (S) of 8 mm connects two steel plates. If the angle between the fusion faces is 75°, what is the effective throat thickness ($t_t$) of the weld?",
-                    "options": ["8.0 mm", "5.6 mm", "4.8 mm", "5.2 mm"],
-                    "answer": 1,
-                    "solution": "Effective throat thickness is calculated as t_t = k * S. For a fusion face angle between 60° and 90°, the constant k = 0.70. Hence, t_t = 0.70 * 8 mm = 5.6 mm."
-                },
-                {
-                    "q": "The structural design reduction in the net section rupture strength of an angle connected to a gusset plate through only one leg is primarily caused by:",
-                    "options": ["Residual stress concentration", "Shear lag effect", "Block shear failure", "Ductility reduction factor"],
-                    "answer": 1,
-                    "solution": "The rupture strength of a single angle connected through only one leg is affected by non-uniform stress distribution across the un-connected strand, which is a consequence of the shear lag effect."
-                },
-                {
-                    "q": "What is the science that deals with the occurrence, circulation, and distribution of water on the earth and the earth's atmosphere?",
-                    "options": ["Geology", "Hydrology", "Meteorology", "Hydrogeology"],
-                    "answer": 1,
-                    "solution": "Hydrology means the science of water. It deals with the occurrence, circulation, and distribution of water of the earth and earth's atmosphere."
-                },
-                {
-                    "q": "The process of short-term retention of rainwater by vegetation before it reaches the ground surface is known as:",
-                    "options": ["Infiltration", "Percolation", "Interception", "Transpiration"],
-                    "answer": 2,
-                    "solution": "Interception is defined as the short-term retention of rainwater by vegetation."
-                },
-                {
-                    "q": "What is the term used for the movement of water from one upper soil zone to a lower soil zone?",
-                    "options": ["Infiltration", "Percolation", "Interception", "Depression Storage"],
-                    "answer": 1,
-                    "solution": "Percolation is the movement of water from one soil zone to a lower soil zone, whereas infiltration is entry at the surface."
-                },
-                {
-                    "q": "Relative humidity is defined as the ratio of actual vapor pressure to the saturated vapor pressure. How does relative humidity vary with temperature if moisture content remains constant?",
-                    "options": ["Increases with increase in temperature", "Decreases with increase in temperature", "Remains independent of temperature", "First increases, then decreases"],
-                    "answer": 1,
-                    "solution": "Relative humidity (RH) is inversely proportional to temperature. Hence, it decreases as temperature increases."
-                },
-                {
-                    "q": "Which of the following forms of precipitation consists of tiny water droplets of size less than 0.5 mm and intensity less than 1 mm/hr?",
-                    "options": ["Rain", "Drizzle", "Glaze", "Hail"],
-                    "answer": 1,
-                    "solution": "Drizzle is defined by a droplet size < 0.5 mm and intensity < 1 mm/hr."
-                },
-                {
-                    "q": "When rain droplets come in contact with cold ground surfaces at 0°C, they freeze immediately to form a cold, glassy coating known as:",
-                    "options": ["Snow", "Sleet", "Glaze", "Hail"],
-                    "answer": 2,
-                    "solution": "Glaze or freezing rain forms when water droplets freeze immediately upon contact with sub-zero surfaces."
-                },
-                {
-                    "q": "Which type of precipitation is caused by the upward movement of air warmer than the surrounding atmosphere due to localized surface heating?",
-                    "options": ["Cyclonic precipitation", "Convective precipitation", "Orographic precipitation", "Frontal precipitation"],
-                    "answer": 1,
-                    "solution": "Convective precipitation is caused by natural rising of warmer, less dense air due to localized heating of the surface."
-                },
-                {
-                    "q": "Orographic precipitation is primarily caused by air masses being lifted up due to the presence of:",
-                    "options": ["A warm front", "A cold front", "Topographical barriers like mountains", "Pressure deficits at the center of a cyclone"],
-                    "answer": 2,
-                    "solution": "Orographic precipitation occurs when moisture-laden air is forced to ascend over topographic barriers such as mountains."
-                },
-                {
-                    "q": "Which of the following raingauges is an example of a non-recording raingauge widely used in India?",
-                    "options": ["Symon's raingauge", "Tipping bucket raingauge", "Weighing bucket raingauge", "Natural siphon raingauge"],
-                    "answer": 0,
-                    "solution": "Symon's raingauge is the standard non-recording raingauge utilized by the India Meteorological Department (IMD)."
-                },
-                {
-                    "q": "Which type of recording raingauge provides a mechanical digital signal or electrical pulses via bucket movements and is highly suitable for remote, automated weather stations?",
-                    "options": ["Symon's raingauge", "Tipping bucket raingauge", "Weighing bucket raingauge", "Natural siphon raingauge"],
-                    "answer": 1,
-                    "solution": "The tipping bucket raingauge generates pulses for every 0.25 mm of rain and is ideal for digital transmission in remote areas."
-                },
-                {
-                    "q": "A raingauge station 'X' went out of order during a storm. The normal annual precipitation values for stations X, A, B, and C are 80, 90, 70, and 100 cm respectively. During the storm, the rainfall recorded at A, B, and C were 9, 7, and 10 cm. Using the Normal Ratio Method, estimate the missing storm precipitation at station X:",
-                    "options": ["7.5 cm", "8.0 cm", "8.5 cm", "9.0 cm"],
-                    "answer": 1,
-                    "solution": "P_x = (N_x / M) * [(P_a/N_a) + (P_b/N_b) + (P_c/N_c)] = (80 / 3) * [(9/90) + (7/70) + (10/100)] = 8.0 cm."
-                },
-                {
-                    "q": "The optimum number of raingauge stations (N) in a catchment can be calculated using the statistical formula involving the coefficient of variation ($C_v$) and allowable percentage error (e). What is this relation?",
-                    "options": ["N = (C_v / e)", "N = (C_v / e)²', "N = sqrt(C_v / e)", "N = (e / C_v)²"],
-                    "answer": 1,
-                    "solution": "The optimum number of stations is determined by the formula N = (C_v / e)², where C_v is the coefficient of variation and e is the allowable error."
-                },
-                {
-                    "q": "Which of the following methods for calculating the average precipitation over a catchment is considered the most accurate because it accounts for topographical variations by using contours of equal rainfall?",
-                    "options": ["Arithmetic Average Method", "Thiessen Polygon Method", "Isohyetal Method", "Station-Year Method"],
-                    "answer": 2,
-                    "solution": "The Isohyetal Method is considered the best and most accurate method because it accounts for spatial and topographic variations using line contours of equal rainfall depth."
-                },
-                {
-                    "q": "A plot showing the cumulative rainfall depth against time in a chronological sequence is known as a:",
-                    "options": ["Hyetograph", "Mass Curve of Rainfall", "Hydrograph", "Isopluvial Map"],
-                    "answer": 1,
-                    "solution": "A plot of cumulative rainfall versus time is a Mass Curve. A plot of rainfall intensity versus time is a Hyetograph."
-                },
-                {
-                    "q": "A hyetograph is a graphical representation plot of which variables?",
-                    "options": ["Cumulative rainfall depth vs. time", "Rainfall intensity vs. time", "Discharge vs. time", "Infiltration capacity vs. time"],
-                    "answer": 1,
-                    "solution": "A hyetograph represents rainfall intensity on the vertical axis against time on the horizontal axis."
-                },
-                {
-                    "q": "What is the term given to lines on a map connecting places that experience equal depths of rainfall for a given duration?",
-                    "options": ["Isagones", "Isobars", "Isohyets", "Isocontours"],
-                    "answer": 2,
-                    "solution": "Isohyets are lines on a map connecting points of equal rainfall depth."
-                },
-                {
-                    "q": "Evaporation from a water surface is inversely proportional to which of the following atmospheric parameters?",
-                    "options": ["Wind speed", "Water temperature", "Atmospheric pressure", "Vapor pressure deficit"],
-                    "answer": 2,
-                    "solution": "Evaporation rate increases as atmospheric pressure decreases (inverse relationship)."
-                },
-                {
-                    "q": "In wind velocity calculations near the ground, the wind speed variation with height 'Z' is often governed by a power-law relationship. What is this proportionality?",
-                    "options": ["u ∝ Z^0.5", "u ∝ Z^1.5", "u ∝ Z^(1/7)", "u ∝ Z²"],
-                    "answer": 2,
-                    "solution": "Wind speed variation with height follows a 1/7th power law relationship: u ∝ Z^(1/7)."
-                },
-                {
-                    "q": "To reduce evaporation losses from open water reservoirs, which chemical film can be applied effectively as an evaporation retardant?",
-                    "options": ["Copper sulfate", "Cetyl alcohol", "Sodium chloride", "Calcium hydroxide"],
-                    "answer": 1,
-                    "solution": "Cetyl alcohol (hexadecanol) and stearyl alcohol are chemical monomolecular films used to form thin layers on water surfaces to reduce evaporation."
-                },
-                {
-                    "q": "The instrument used to measure the rate of transpiration from a plant directly in a controlled configuration is the:",
-                    "options": ["Lysimeter", "Atmometer", "Phytometer", "Tensiometer"],
-                    "answer": 2,
-                    "solution": "A phytometer is a specialized vessel containing a plant used to measure the water lost exclusively via transpiration."
-                },
-                {
-                    "q": "During a 6-hour storm, the total rainfall depth was 8.0 cm. If the corresponding surface runoff volume collected over a catchment area of 20 km² was 0.80 × 10⁶ m³, what is the Phi-index ($\phi$-index) for the storm, assuming continuous runoff?",
-                    "options": ["0.50 cm/hr", "0.66 cm/hr", "1.00 cm/hr", "1.33 cm/hr"],
-                    "answer": 1,
-                    "solution": "Runoff depth = Volume / Area = 4.0 cm. Total abstractions = 8.0 cm - 4.0 cm = 4.0 cm. Phi-index = Abstractions / Duration = 4.0 cm / 6 hr = 0.66 cm/hr."
-                },
-                {
-                    "q": "The ratio of the plastic section modulus ($Z_p$) to the elastic section modulus ($Z_e$) for a diamond cross-section is exactly equal to:",
-                    "options": ["1.5", "1.7", "2.0", "2.34"],
-                    "answer": 2,
-                    "solution": "The shape factor for a diamond cross-section is derived as exactly 2.0."
-                },
-                {
-                    "q": "Under fully plastic conditions, a plastic hinge allows an infinite rotation to occur at a cross-section while maintaining what internal value?",
-                    "options": ["Zero moment", "Elastic yield moment (M_y)", "Constant plastic moment (M_p)", "Variable warping torque"],
-                    "answer": 2,
-                    "solution": "A plastic hinge behaves like a friction hinge that allows rotation while maintaining a constant resistance equal to the plastic moment capacity (M_p)."
-                },
-                {
-                    "q": "What is the structural load factor defined as in plastic analysis frame design?",
-                    "options": ["Working Load / Collapse Load", "Collapse Load / Working Load", "Plastic Moment / Yield Moment", "Ultimate Stress / Permissible Stress"],
-                    "answer": 1,
-                    "solution": "Load factor is defined as the ratio of the collapse load to the working service load."
-                },
-                {
-                    "q": "For a standard circular solid cross-section of diameter D, what is its shape factor?",
-                    "options": ["1.5", "1.7", "1.15", "2.0"],
-                    "answer": 1,
-                    "solution": "The shape factor for a solid circular section is 16 / (3π) ≈ 1.697, which rounds to approximately 1.7."
-                },
-                {
-                    "q": "For an I-section beam, the shape factor typically falls in the range of:",
-                    "options": ["1.0 to 1.15", "1.2 to 1.4", "1.5 to 1.7", "1.8 to 2.0"],
-                    "answer": 0,
-                    "solution": "Standard wide-flange I-sections have a very high efficiency with shape factors typically varying from 1.12 to 1.15."
-                },
-                {
-                    "q": "A propped cantilever beam of span L is subjected to a central point load W. What is the true collapse load ($W_c$) of the beam in terms of its plastic moment capacity $M_p$?",
-                    "options": ["4 M_p / L", "6 M_p / L", "8 M_p / L", "11.65 M_p / L"],
-                    "answer": 1,
-                    "solution": "For a propped cantilever under a central point load, hinges form at the fixed support and under the load. Using Virtual Work yields W_c = 6 M_p / L."
-                },
-                {
-                    "q": "A fixed-ended beam of span L is subjected to a uniformly distributed load 'w' over its entire span. The collapse value of the load intensity ($w_c$) is given by:",
-                    "options": ["8 M_p / L²", "12 M_p / L²", "16 M_p / L²", "24 M_p / L²"],
-                    "answer": 2,
-                    "solution": "For a fixed beam with a UDL, three plastic hinges form (two at ends, one at midspan). Virtual work gives w_c = 16 M_p / L²."
-                },
-                {
-                    "q": "The lower bound theorem of plastic analysis satisfies which of the following conditions?",
-                    "options": ["Mechanism condition and Equilibrium condition", "Equilibrium condition and Yield condition", "Mechanism condition and Yield condition", "Stress lag condition and Compatibility condition"],
-                    "answer": 1,
-                    "solution": "The Lower Bound (Static) Theorem satisfies the equilibrium and yield conditions, but does not necessarily satisfy the mechanism condition."
-                },
-                {
-                    "q": "According to the structural steel guidelines of IS 800:1984, what is the maximum permissible value of the slenderness ratio ($\lambda$) for a member carrying compressive loads resulting from dead load and superimposed live loads?",
-                    "options": ["180", "250", "350", "400"],
-                    "answer": 0,
-                    "solution": "As per standard codes, a member subjected to compressive loads resulting from dead load and live load is strictly limited to a slenderness ratio of 180."
-                },
-                {
-                    "q": "Under IS 800:1984 specifications, what is the maximum permissible slenderness ratio for a structural member subjected to normal tension forces only?",
-                    "options": ["180", "250", "350", "400"],
-                    "answer": 3,
-                    "solution": "For members carrying purely tensile forces (other than wind/earthquake pre-tensioned ties), the maximum slenderness ratio allowed is 400."
-                },
-                {
-                    "q": "When calculating the gross diameter of a rivet hole or bolt hole, if the nominal diameter of the fastener shank is 30 mm, what gross diameter must be used?",
-                    "options": ["31.5 mm", "32.0 mm", "32.5 mm", "33.0 mm"],
-                    "answer": 1,
-                    "solution": "For nominal diameters greater than 25 mm, the hole diameter allowance is +2.0 mm. Thus, 30 mm + 2.0 mm = 32.0 mm."
-                },
-                {
-                    "q": "The minimum edge distance from the center of a fastener hole to the nearest edge of a plate for hand-flame cut edges should not be less than:",
-                    "options": ["1.5 × hole diameter", "1.7 × hole diameter", "2.0 × hole diameter", "2.5 × hole diameter"],
-                    "answer": 1,
-                    "solution": "The minimum edge distance is 1.5 times the hole diameter for machine-cut edges, and 1.7 times the hole diameter for hand-cut/flame-cut edges."
-                },
-                {
-                    "q": "The distance between centers of any two adjacent fasteners in a line in the direction of stress (pitch) must not be less than:",
-                    "options": ["1.5 times nominal diameter", "2.0 times nominal diameter", "2.5 times nominal diameter", "3.0 times nominal diameter"],
-                    "answer": 2,
-                    "solution": "The minimum pitch specification between adjacent fasteners is 2.5 times the nominal diameter of the fastener."
-                },
-                {
-                    "q": "What is the maximum pitch allowed for fasteners along a line in a tension member?",
-                    "options": ["12 t or 200 mm, whichever is less", "16 t or 200 mm, whichever is less", "24 t or 300 mm, whichever is less", "32 t or 300 mm, whichever is less"],
-                    "answer": 1,
-                    "solution": "The maximum pitch for bolts/rivets in a tension member is limited to 16 times the thickness of the thinner plate (t) or 200 mm, whichever is less."
-                },
-                {
-                    "q": "In a compression member, the maximum pitch of stitched inline fasteners is limited to:",
-                    "options": ["12 t or 200 mm, whichever is less", "16 t or 200 mm, whichever is less", "24 t or 300 mm, whichever is less", "32 t or 300 mm, whichever is less"],
-                    "answer": 0,
-                    "solution": "For compression members, the maximum pitch is restricted to 12 times the thickness of the thinner plate (t) or 200 mm, whichever is less, to prevent local buckling."
-                },
-                {
-                    "q": "A single lap joint connects two plates using a single row of bolts. This joint configuration is structurally inefficient because the eccentricity of the forces induces:",
-                    "options": ["High torsional warping", "Additional bending stresses", "Block shear yielding", "Combined triaxial compression"],
-                    "answer": 1,
-                    "solution": "In a single lap joint, the lines of action of the tensile forces are eccentric, which introduces an undesirable bending moment."
-                },
-                {
-                    "q": "According to IS 800:2007, what is the partial safety factor for material resistance governed by ultimate rupture strength of the net cross-section ($\gamma_{m1}$)?",
-                    "options": ["1.10", "1.25", "1.50", "1.20"],
-                    "answer": 1,
-                    "solution": "IS 800 specifies a partial safety factor $\gamma_{m0} = 1.10$ for yielding/buckling, and $\gamma_{m1} = 1.25$ for ultimate rupture strength configurations."
-                },
-                {
-                    "q": "For structural connections designed using shop-fabricated fillet welds, what partial safety factor ($\gamma_{mw}$) must be applied to the weld capacity?",
-                    "options": ["1.10", "1.25", "1.50", "1.00"],
-                    "answer": 1,
-                    "solution": "Under the Limit State Method, the partial safety factor for shop welds ($\gamma_{mw}$) is 1.25."
-                },
-                {
-                    "q": "What is the primary function of a lug angle used in a structural steel tension member connection?",
-                    "options": ["To increase the block shear capacity", "To reduce the required length of the connection and gusset plate", "To eliminate the shear lag effect completely", "To decrease the slenderness ratio of the angle"],
-                    "answer": 1,
-                    "solution": "A lug angle shares the active structural load, significantly reducing the length of the connection joint and the required gusset plate size."
-                }
+  {
+    "q": "A bar chart of four activities indicates their scheduled start and finish 'end-of-day' values along with their daily resource requirements as follows: Activity 1 (Days 0 to 16, 8/day), Activity 2 (Days 11 to 22, 6/day), Activity 3 (Days 19 to 28, 7/day), and Activity 4 (Days 20 to 24, 9/day). What will be the maximum and the minimum resource need on any of the days?",
+    "options": ["22, 6", "21, 6", "21, 8", "20, 8"],
+    "answer": 0,
+    "solution": "By superimposing the schedules: From day 0-11, load = 8. From day 11-16, load = 8 + 6 = 14. From day 16-19, load = 6. From day 19-20, load = 6 + 7 = 13. From day 20-22, load = 6 + 7 + 9 = 22. From day 22-24, load = 7 + 9 = 16. From day 24-28, load = 7. Thus, the maximum daily demand is 22 and the minimum is 6."
+  },
+  {
+    "q": "The time estimates obtained from four contractors P, Q, R, and S for executing a particular job are given below in the format (Optimistic time t_o, Most likely time t_m, Pessimistic time t_p). Which one of these contractors is more certain about completing the job in time?\nContractor P: (5, 10, 13)\nContractor Q: (6, 9, 12)\nContractor R: (5, 10, 14)\nContractor S: (4, 10, 13)",
+    "options": ["P", "Q", "R", "S"],
+    "answer": 1,
+    "solution": "Certainty of completion is inversely proportional to the standard deviation or variance of the time distribution. Standard deviation σ is calculated as (t_p - t_o) / 6. For P: σ = 8/6 = 1.33; For Q: σ = 6/6 = 1.00; For R: σ = 9/6 = 1.50; For S: σ = 9/6 = 1.50. Since Contractor Q has the minimum standard deviation, they provide the highest certainty."
+  },
+  {
+    "q": "There are four consecutive activities in a simple linear network, each with a mean duration of T and each with 'k' as the standard deviation of its duration. The overall project duration through these activities is likely to be in the range of:",
+    "options": ["4T ± k", "4T ± 2k", "4T ± 4k", "4T ± 6k"],
+    "answer": 1,
+    "solution": "According to the central limit theorem for consecutive activities, the total expected mean duration is the sum of individual means: T + T + T + T = 4T. The total project variance is the sum of individual variances: k² + k² + k² + k² = 4k². The project standard deviation is therefore √(4k²) = 2k. Thus, the range of project duration is 4T ± 2k."
+  },
+  {
+    "q": "A, B, C, D, and E are 5 activities along the unique critical path of an AOA network. Their expected durations are 7, 6, 11, 14, and 5 days respectively, and their corresponding standard deviations are 2, 2, 3, 4, and 1 days. What is the standard 99.7% (3σ) probabilistic range of the total project duration?",
+    "options": ["31.2 to 54.8 days", "28.1 to 57.9 days", "25.5 to 60.5 days", "24.6 to 61.4 days"],
+    "answer": 2,
+    "solution": "Total mean project duration = 7 + 6 + 11 + 14 + 5 = 43 days. Total variance along the critical path σ² = 2² + 2² + 3² + 4² + 1² = 4 + 4 + 9 + 16 + 1 = 34. The project standard deviation is σ = √34 ≈ 5.83 days. For a 3σ range: 43 ± 3(5.83) = 43 ± 17.5 = 25.5 to 60.5 days."
+  },
+  {
+    "q": "A supplier sends steel plates in a huge quantity to a contractor. The first batch was exhaustively examined for thickness and gave a standard deviation of 1.80. The contractor feels that the knowledge of the mean within a range of ±0.5 of its true value with a probability of 95% (Z ≈ 1.96) would be satisfactory. What is the required sample size?",
+    "options": ["40 numbers", "30 numbers", "60 numbers", "50 numbers"],
+    "answer": 3,
+    "solution": "The formula for sample size based on a specified error limit is n = (Z * σ / E)². Substituting the given parameters: n = (1.96 * 1.80 / 0.5)² = (3.528 / 0.5)² = (7.056)² = 49.78, which matches approximately 50 numbers."
+  },
+  {
+    "q": "A preliminary survey indicates that 20% of the time of a gang of workers is spent idly. What is the total number of observations required to determine the proportion of idle time within an absolute tolerance of ±5% with a 95% confidence limit (Z = 1.96)?",
+    "options": ["216 observations", "226 observations", "246 observations", "236 observations"],
+    "answer": 2,
+    "solution": "Using the statistical sampling equation n = (Z² * p * q) / E², where p = 0.20 (idle proportion), q = 1 - p = 0.80, and E = 0.05. Substituting the values gives: n = (1.96² * 0.20 * 0.80) / (0.05)² = (3.8416 * 0.16) / 0.0025 = 0.614656 / 0.0025 = 245.86 ≈ 246 observations."
+  },
+  {
+    "q": "Consider the following statements regarding a linked bar chart:\n1. Any activity can be shown split into several sub-parts if desirable.\n2. Inter-linkages between WBS groups can be depicted.\n3. Mandatory pauses between activities are always demonstrated on the chart.\nWhich of these statements is/are correct?",
+    "options": ["1, 2 and 3", "3 only", "2 only", "1 only"],
+    "answer": 3,
+    "solution": "A linked bar chart primarily introduces activity interdependencies to a standard bar chart layout, which directly allows it to display the relationships/inter-linkages between distinct Work Breakdown Structure (WBS) groups or items."
+  },
+  {
+    "q": "Which of the following parameters/factors are characteristic of the Programme Evaluation Review Technique (PERT)?\n1. Projects are of the non-repetitive type.\n2. Time required need not be known.\n3. Time required is known precisely.\n4. Events have been established for planning.\n5. Emphasis is given to activities of the project.",
+    "options": ["1, 2 and 4", "3, 4 and 5", "1, 3 and 4", "1, 2 and 5"],
+    "answer": 0,
+    "solution": "PERT is an event-oriented probabilistic approach preferred for non-repetitive configurations (such as R&D projects) where individual activity durations carry high uncertainty (hence, precise durations are not known beforehand), and structural control maps between defined milestones/events."
+  },
+  {
+    "q": "Match the items in List-I (Diagram Based Nomenclature) with List-II (Information Capability):\nList-I:\nA. Work-breakdown structure\nB. Bar chart\nC. Linked bar chart\nD. Time computations on network\n\nList-II:\n1. Target dates for interface events can be stipulated\n2. Can be hierarchical\n3. Can include information on cost distribution over time\n4. Best suited for monitoring on network including that for costs",
+    "options": ["A-4, B-3, C-2, D-1", "A-2, B-1, C-4, D-3", "A-4, B-1, C-2, D-3", "A-2, B-3, C-4, D-1"],
+    "answer": 3,
+    "solution": "A Work-breakdown structure (WBS) breaks a project down into a hierarchical framework (A-2). A traditional bar chart is highly effective at displaying cost distributions or resource allocation linearly over time (B-3). A linked bar chart adds critical progress milestones and dependency ties over the network (C-4), and explicit network time computations yield target milestones or dates for interface events (D-1)."
+  },
+  {
+    "q": "Consider the following statements regarding the Work Breakdown Structure (WBS):\n1. It is a graphical representation of the entire program.\n2. The Top-Down approach to planning is adopted.\n3. The Down-Top approach to planning is adopted.\n4. It is suitable for complex projects.\nWhich of the statements given above are correct?",
+    "options": ["1 only", "2 and 4", "3 and 4", "4 only"],
+    "answer": 1,
+    "solution": "A Work Breakdown Structure organizes and defines the total scope of a complex project by breaking down tasks using a logical top-down planning approach, progressively splitting multi-tiered deliverables into smaller, manageable components."
+  }
             ]
         };
 
