@@ -53,27 +53,27 @@
     "solution": "According to the central limit theorem for consecutive activities, the total expected mean duration is the sum of individual means: T + T + T + T = 4T. The total project variance is the sum of individual variances: k² + k² + k² + k² = 4k². The project standard deviation is therefore √(4k²) = 2k. Thus, the range of project duration is 4T ± 2k."
   },
   {
-    "q": "An activity along the critical path of a network has an optimistic time of 4 days, a most likely time of 7 days, and a pessimistic time of 16 days. What is its expected duration?",
-    "options": ["7 days", "8 days", "9 days", "10 days"],
+    "q": "In a project network diagram, the path that has the longest duration through the system and determines the minimum possible time to complete the project is known as the:",
+    "options": ["Slack Path", "Critical Path", "Sub-critical Path", "Dummy Path"],
     "answer": 1,
-    "solution": "The expected time (t_e) in PERT is computed using the weighted formula: t_e = (t_o + 4*t_m + t_p) / 6. Substituting the values: t_e = (4 + 4*7 + 16) / 6 = (4 + 28 + 16) / 6 = 48 / 6 = 8 days."
+    "solution": "The critical path is the longest sequence of dependent activities in a network that directly governs the shortest possible total duration of the project."
   },
   {
-    "q": "In project sampling and quality control inspection, if a contractor wishes to reduce the error limit of an estimated mean asset thickness by half, the required sample size must be:",
-    "options": ["Halved", "Doubled", "Tripled", "Quadrupled"],
-    "answer": 3,
-    "solution": "The standard sample size formula is n = (Z * σ / E)², where E is the allowable error limit. Since n is inversely proportional to the square of the error limit (n ∝ 1/E²), reducing the error limit by half (E/2) requires the sample size to increase by a factor of 2², which means it must be quadrupled."
-  },
-  {
-    "q": "Which of the following is considered a primary major drawback of utilizing conventional Gantt/Bar charts in complex engineering project management?",
-    "options": ["They are too difficult to read or construct mechanically", "They cannot show the resource loading details over progress increments", "They do not explicitly depict the hidden dependencies and interrelationships between activities", "Project durations cannot be estimated graphically"],
+    "q": "Which of the following management networks is strictly deterministic in nature, uses a single time estimate per activity, and places its primary structural focus directly on active cost-time trade-offs?",
+    "options": ["PERT", "GERT", "CPM", "Bar Chart"],
     "answer": 2,
-    "solution": "While bar charts are simple, intuitive, and visually scannable, their absolute primary limitation is their inability to systematically define or explicitly depict dependencies, paths, and interrelationships between various parallel activities."
+    "solution": "The Critical Path Method (CPM) is a deterministic model that utilizes a single known time estimate for each activity, focusing heavily on balancing execution costs against scheduled durations."
+  },
+  {
+    "q": "The total amount of time by which a specific network activity can be delayed from its earliest start date without delaying the final project completion milestone is defined as:",
+    "options": ["Free Float", "Independent Float", "Interference Float", "Total Float"],
+    "answer": 3,
+    "solution": "Total Float is the maximum duration an activity can be delayed without affecting the scheduled final completion time of the entire project."
   },
   {
     "q": "Consider the following statements regarding a linked bar chart:\n1. Any activity can be shown split into several sub-parts if desirable.\n2. Inter-linkages between WBS groups can be depicted.\n3. Mandatory pauses between activities are always demonstrated on the chart.\nWhich of these statements is/are correct?",
     "options": ["1, 2 and 3", "3 only", "2 only", "1 only"],
-    "answer": 2,
+    "answer": 3,
     "solution": "A linked bar chart primarily introduces activity interdependencies to a standard bar chart layout, which directly allows it to display the relationships/inter-linkages between distinct Work Breakdown Structure (WBS) groups or items."
   },
   {
@@ -95,49 +95,293 @@
     "solution": "A Work Breakdown Structure organizes and defines the total scope of a complex project by breaking down tasks using a logical top-down planning approach, progressively splitting multi-tiered deliverables into smaller, manageable components."
   },
   {
-    "q": "In a single-path PERT network timeline, the optimistic time is 3 days, the most likely time is 6 days, and the pessimistic time is 9 days. What is the standard deviation of this activity's duration?",
-    "options": ["0.5 days", "1.0 day", "1.5 days", "2.0 days"],
+    "q": "In a network scheduling diagram, an artificial line or dependency arrow that consumes zero time and zero resources but is included solely to maintain correct logical relationships is a:",
+    "options": ["Critical Link", "Slack Vector", "Dummy Activity", "Sub-critical Task"],
+    "answer": 2,
+    "solution": "A dummy activity is a logical tool used in Arrow-on-Activity networks to show dependencies without adding any time or resource consumption."
+  },
+  {
+    "q": "If the earliest start time ($ES$) for an activity is 10 days, its latest start time ($LS$) is 14 days, and its total duration is 6 days, what is the total float associated with this activity?",
+    "options": ["0 days", "4 days", "16 days", "24 days"],
     "answer": 1,
-    "solution": "In PERT analysis, the standard deviation (σ) of an activity time distribution is computed using the formula: σ = (t_p - t_o) / 6. Substituting the given values: σ = (9 - 3) / 6 = 6 / 6 = 1.0 day."
+    "solution": "Total Float is calculated as the difference between the latest timelines and earliest timelines: Total Float = LS - ES = 14 - 10 = 4 days."
   },
   {
-    "q": "By definition, the critical path in any standard CPM/PERT project network diagram represents:",
-    "options": ["The path containing the shortest sequence of events", "The longest path through the network indicating the minimum time required to complete the project", "The path that consumes the minimum amount of overall direct project costs", "The path consisting entirely of dummy activities"],
+    "q": "Under standard PERT scheduling analysis, the individual activity durations are assumed to follow which mathematical statistical distribution model?",
+    "options": ["Normal Distribution", "Log-Normal Distribution", "Beta Distribution", "Uniform Distribution"],
+    "answer": 2,
+    "solution": "In PERT, individual activity duration probabilities are modeled using a Beta distribution, while the overall project duration is approximated using a Normal distribution."
+  },
+  {
+    "q": "When compressing or crashing a project schedule to reduce overall project duration, the process should always begin by crashing the activity on the critical path that features the:",
+    "options": ["Highest normal cost", "Lowest cost slope", "Shortest possible normal duration", "Longest pessimistic time"],
     "answer": 1,
-    "solution": "The critical path is defined as the longest continuous sequential path from the start node to the end node of a project network. It determines the minimum total calendar time required to complete the entire project."
+    "solution": "To compress a project schedule cost-effectively, you must shorten the critical activity that has the lowest cost slope (the lowest rate of cost increase per day saved)."
   },
   {
-    "q": "A continuous linear pipeline project is split into six identical, independent sequential activities, each having a, m, and b probabilistic durations that result in an overall standard deviation of X₁ days for the full project. As an alternative setup, a project planner decides to club these activities pairwise into three larger non-modified tasks (1st+2nd, 3rd+4th, 5th+6th). If the standard deviation calculated for this new clubbed network configuration is X₂, what will be the value of the ratio X₂ / X₁?",
-    "options": ["2/3", "7/6", "5/6", "1"],
-    "answer": 3,
-    "solution": "Let the variance of each individual small activity be σ². For the original network of six independent activities, the total project variance is the sum of their variances: Var(Original) = 6σ². Thus, the standard deviation is X₁ = √(6σ²).\n\nWhen the activities are clubbed pairwise into three larger tasks, the project is still comprised of the exact same physical activities operating sequentially. The variance of the three new macro-tasks will be 2σ², 2σ², and 2σ² respectively. The total project variance remains: Var(Modified) = 2σ² + 2σ² + 2σ² = 6σ². Therefore, X₂ = √(6σ²). The ratio X₂ / X₁ = 1."
-  },
-  {
-    "q": "PERT calculations for a project establish an expected critical path completion length of 40 weeks with a total project standard deviation of 4 weeks. What is the scheduled time required to complete this project with a 50% probability factor?",
-    "options": ["36 weeks", "40 weeks", "44 weeks", "48 weeks"],
+    "q": "The amount of time by which an activity can be delayed without delaying the early start time of any immediate successor activity in the network is known as:",
+    "options": ["Total Float", "Free Float", "Independent Float", "Interference Float"],
     "answer": 1,
-    "solution": "The probability distribution of project completion in PERT is assumed to be normal. A 50% completion probability corresponds to a standard normal deviate Z = 0. Since Z = (T_s - T_e) / σ, when Z = 0, the target scheduled time (T_s) is exactly equal to the expected mean project length (T_e), which is 40 weeks."
+    "solution": "Free Float is the buffer time available to an activity assuming all prior activities start as early as possible, without affecting the early start dates of following tasks."
   },
   {
-    "q": "Three project tasks F, G, and H are scheduled to be performed sequentially with individual durations of 15, 21, and 27 days, respectively. To optimize the schedule, a ladder network design is adopted where each task is divided into 3 equal sequential sub-segments. Assuming typical laddering dependencies are established across segments (e.g., segment 1 of an activity can trigger segment 1 of the following activity), what is the total net reduction in project duration?",
-    "options": ["15 days", "18 days", "21 days", "24 days"],
-    "answer": 3,
-    "solution": "1. Original sequential duration = 15 + 21 + 27 = 63 days.\n\n2. In a ladder network where activities are broken into 3 equal sub-parts:\n• Each sub-part of F = 15 / 3 = 5 days (F₁, F₂, F₃)\n• Each sub-part of G = 21 / 3 = 7 days (G₁, G₂, G₃)\n• Each sub-part of H = 27 / 3 = 9 days (H₁, H₂, H₃)\n\n3. The critical path through a standard ladder network configuration is dictated by: the first segment of leading tasks + all segments of the longest task + the last segment of trailing tasks.\n• Lead-in time to start H = F₁ + G₁ = 5 + 7 = 12 days.\n• Total duration of the longest task (H) = 9 + 9 + 9 = 27 days.\n• Total minimum laddered duration = Lead-in + Full execution of H = 12 + 27 = 39 days.\n\n4. Net saving in total project time = Original Duration - Laddered Duration = 63 - 39 = 24 days."
-  },
-  {
-    "q": "If the Total Float of an activity is computed as 10 days and its Free Float is evaluated as 6 days, what is the value of its Interference Float?",
-    "options": ["2 days", "4 days", "10 days", "16 days"],
+    "q": "An activity 201-207 in an AOA network diagram has an assigned duration of 8 days. The early event time (EET) and late event time (LET) at the tail node (201) are 10 and 12 days, respectively. The EET and LET at the head node (207) are 21 and 26 days, respectively. Arrange the following floats in strict order of DECREASING magnitude: Free Float, Interference Float, Independent Float.",
+    "options": ["Free float - Interference float - Independent float", "Free float - Independent float - Interference float", "Interference float - Free float - Independent float", "Interference float - Independent float - Free float"],
     "answer": 1,
-    "solution": "Interference Float represents the portion of the total float that blocks or interferes with the early start milestones of successor activities. It is mathematically defined as the difference between Total Float and Free Float: Interference Float = Total Float - Free Float = 10 - 6 = 4 days."
+    "solution": "First, derive each individual float value from the node parameters:\n• Total Float (TF) = LET_head - EET_tail - Duration = 26 - 10 - 8 = 8 days.\n• Free Float (FF) = EET_head - EET_tail - Duration = 21 - 10 - 8 = 3 days.\n• Interference Float (InF) = TF - FF = LET_head - EET_head = 26 - 21 = 5 days.\n• Independent Float (IdF) = EET_head - LET_tail - Duration = 21 - 12 - 8 = 1 day.\nComparing magnitudes: Interference Float (5) > Free Float (3) > Independent Float (1). Decrease sequence matches Option 1."
   },
   {
     "q": "Consider the following sequential project activity profile:\n• Activity A: Immediate Predecessor = None, Duration = 10 days\n• Activity B: Immediate Predecessor = None, Duration = 9 days\n• Activity C: Immediate Predecessor = A, Duration = 9 days\n• Activity D: Immediate Predecessor = A, Duration = 8 days\n• Activity E: Immediate Predecessor = B, Duration = 7 days\n• Activity F: Immediate Predecessor = B, Duration = 11 days\n• Activity G: Immediate Predecessor = D, E, Duration = 5 days\nDetermine the total project duration dictated by the critical path.",
     "options": ["25 days", "23 days", "21 days", "19 days"],
     "answer": 1,
     "solution": "Trace all sequential network paths to find the longest path (critical path):\n• Path 1: A → C = 10 + 9 = 19 days.\n• Path 2: A → D → G = 10 + 8 + 5 = 23 days.\n• Path 3: B → E → G = 9 + 7 + 5 = 21 days.\n• Path 4: B → F = 9 + 11 = 20 days.\nThe longest path is Path 2 (A-D-G), which yields a total project duration of 23 days."
+  },
+  {
+    "q": "In network updating, if an activity's progress matches its original schedule exactly during the review interval, its remaining duration at the update milestone will equal:",
+    "options": ["Original duration", "Zero", "Original duration minus elapsed time", "Elapsed time"],
+    "answer": 2,
+    "solution": "If an activity progresses as planned, its remaining duration at any point is simply the original total scheduled duration minus the time that has already passed."
+  },
+  {
+    "q": "A father notes that when his teenage daughter uses the telephone she takes no less than 5 minutes for a call, but sometimes as much as an hour (60 minutes). 15-minute calls are more frequent than calls of any other duration. If the daughter's calls are modeled as a PERT project activity, what is the statistically expected duration of each phone call?",
+    "options": ["14 (5/6) minutes", "16 (5/6) minutes", "18 (5/6) minutes", "20 (5/6) minutes"],
+    "answer": 3,
+    "solution": "Identify the standard PERT time parameters from the description:\n• Optimistic time (t_o) = 5 minutes\n• Pessimistic time (t_p) = 60 minutes\n• Most likely time (t_m) = 15 minutes\nApply the PERT expected duration formula:\nt_e = (t_o + 4t_m + t_p) / 6 = (5 + 4(15) + 60) / 6 = 125 / 6 = 20 (5/6) minutes."
+  },
+  {
+    "q": "Match the following float types in List-I with their accurate mathematical definitions in List-II:\nList-I:\nA. Total Float\nB. Free Float\nC. Independent Float\nD. Interference Float\n\nList-II:\n1. EET of successor activity minus EET of current activity minus activity duration\n2. Difference between Total Float and Free Float\n3. LET of head node minus EET of tail node minus activity duration\n4. EET of head node minus LET of tail node minus activity duration",
+    "options": ["A-3, B-1, C-4, D-2", "A-3, B-4, C-1, D-2", "A-2, B-1, C-4, D-3", "A-1, B-3, C-2, D-4"],
+    "answer": 0,
+    "solution": "The correct pairings match basic CPM time metrics:\n• Total Float: LET_head - EET_tail - duration (A-3).\n• Free Float: EET_successor - EET_current - duration (B-1).\n• Independent Float: EET_head - LET_tail - duration (C-4).\n• Interference Float: TF - FF (D-2)."
+  },
+  {
+    "q": "Which type of financial cost in construction project management decreases linearly as the overall project duration is compressed or shortened?",
+    "options": ["Direct Cost", "Indirect Cost", "Material Cost", "Labor Cost"],
+    "answer": 1,
+    "solution": "Indirect costs (such as overheads, administrative salaries, and site utilities) scale with time; therefore, reducing project duration linearly decreases indirect costs."
+  },
+  {
+    "q": "In resources leveling operations, the ultimate objective of the network modification framework is to:",
+    "options": ["Minimize total project duration", "Smooth out day-to-day resource demand fluctuations", "Reduce the total direct cost of labor", "Maximize critical path float"],
+    "answer": 1,
+    "solution": "Resource leveling modifies activity start times within their available float ranges to smooth out sudden peaks and valleys in resource demand over time."
+  },
+  {
+    "q": "An updating status report contains data on four overlapping activities A, B, C, and D with their schedules and weekly resource demands specified as follows:\n• Activity A: Starts at week 9, Ends at week 16, Resources needed = 6 per week\n• Activity B: Starts at week 11, Ends at week 20, Resources needed = 4 per week\n• Activity C: Starts at week 15, Ends at week 22, Resources needed = 3 per week\n• Activity D: Starts at week 13, Ends at week 24, Resources needed = 7 per week\nWhat will be the maximum total resource load encountered in any single week?",
+    "options": ["20", "17", "16", "14"],
+    "answer": 0,
+    "solution": "Analyze the overlapping load timelines week-by-week:\n- Weeks 9–11: Only A = 6\n- Weeks 11–13: A + B = 6 + 4 = 10\n- Weeks 13–15: A + B + D = 6 + 4 + 7 = 17\n- Weeks 15–16: A + B + C + D = 6 + 4 + 3 + 7 = 20\n- Weeks 16–20: B + C + D = 4 + 3 + 7 = 14\nTherefore, the maximum total resource peak occurs between weeks 15 and 16 with a load of 20."
+  },
+  {
+    "q": "A small project consists of seven activities scheduled in an Activity-on-Node (A-O-N) network. The durations and immediate predecessor relationships are as follows:\n• Activity A (8 days): No predecessor\n• Activity B (10 days): Predecessor is A\n• Activity C (6 days): Predecessor is A\n• Activity D (12 days): Predecessors are B and C\n• Activity E (7 days): Predecessor is B\n• Activity F (16 days): Predecessor is C\n• Activity G (9 days): Predecessors are E, D, and F\nWhat is the total project duration dictated by the critical path?",
+    "options": ["39 days", "35 days", "34 days", "41 days"],
+    "answer": 0,
+    "solution": "Compute the Earliest Finish (EF) times using a forward pass:\n- EF(A) = 8 days\n- EF(B) = 8 + 10 = 18 days\n- EF(C) = 8 + 6 = 14 days\n- EF(E) = 18 + 7 = 25 days\n- EF(D) = max[18, 14] + 12 = 30 days\n- EF(F) = 14 + 16 = 30 days\n- EF(G) = max[25, 30, 30] + 9 = 30 + 9 = 39 days. Thus, total project duration is 39 days."
+  },
+  {
+    "q": "In an Activity-on-Node (A-O-N) project network, dependencies are mapped between activities. Node 1 is the starting activity and connects directly to Node 2, Node 3, and Node 4. Node 2 connects to Node 5. Node 3 connects to Node 5 and Node 6. Node 4 connects to Node 6. Node 5 and Node 6 both connect directly to the terminal Node 7. If a separate direct dependency arrow is also drawn from Node 1 to Node 6, how many total links are redundant and can be deleted without altering network logic?",
+    "options": ["None", "One", "Two", "Three"],
+    "answer": 1,
+    "solution": "A link is redundant if its dependency is already implicitly established through an alternative serial path. Node 1 connects to Node 3, and Node 3 connects to Node 6. This means Node 6 cannot start until Node 1 finishes via Node 3. Consequently, the directly drawn arrow from Node 1 to Node 6 is completely redundant and can be safely deleted."
+  },
+  {
+    "q": "A tractor weighing 12 tonnes is towing a load in its first gear along a 2 percent upgrade. The rolling resistance of the track and terrain is specified as 45 kg/tonne, and the maximum rimpull available in first gear is 6,300 kg. Calculate the net pull available for towing the load:",
+    "options": ["3,425 kg", "5,515 kg", "4,350 kg", "2,975 kg"],
+    "answer": 1,
+    "solution": "1. Weight of the tractor (W) = 12 tonnes = 12,000 kg.\n2. Rolling Resistance (RR) = 45 kg/tonne × 12 tonnes = 540 kg.\n3. Grade Resistance (GR) = W × grade % = 12,000 kg × 0.02 = 240 kg.\n4. Total internal resistance encountered = RR + GR = 540 + 240 = 780 kg.\n5. Net pull available = Maximum rimpull - Total internal resistance = 6,300 - 780 = 5,515 kg."
+  },
+  {
+    "q": "Which of the following earthwork excavating machines utilizes a rigid dipper stick assembly and operates best when cutting into hard vertical earth faces above its own track level?",
+    "options": ["Dragline", "Power Shovel", "Clamshell", "Scraper"],
+    "answer": 1,
+    "solution": "A power shovel features a rigid dipper stick assembly that provides excellent control and high digging forces when cutting upward into faces above its track level."
+  },
+  {
+    "q": "Bulldozer output efficiency drops significantly when moving earth uphill due to the compounding effect of which specific physical force resistance?",
+    "options": ["Rolling Resistance", "Grade Resistance", "Torsional Resistance", "Wind Resistance"],
+    "answer": 1,
+    "solution": "Grade resistance acts against any equipment moving up an incline, increasing the power required to lift the asset's weight and severely cutting production rate."
+  },
+  {
+    "q": "An engineering equipment is purchased for Rs. 2,00,000 with an estimated useful life of 5 years. By using the double-rate declining balance method of depreciation accounting, what will be the residual book value of the asset at the end of the second year?",
+    "options": ["Rs. 1,28,000", "Rs. 1,20,000", "Rs. 72,000", "Rs. 60,000"],
+    "answer": 2,
+    "solution": "1. Double declining balance rate = 2 / 5 = 40% per year.\n2. Year 1 Depreciation = 2,00,000 × 0.40 = 80,000; Book Value = 1,20,000.\n3. Year 2 Depreciation = 1,20,000 × 0.40 = 48,000; Book Value = 1,20,000 - 48,000 = Rs. 72,000."
+  },
+  {
+    "q": "Which type of earth-moving equipment is uniquely designed to dig, load, haul, dump, and spread soil layers over long distances entirely within its own single machine cycle?",
+    "options": ["Backhoe", "Scraper", "Bulldozer", "Trenching Machine"],
+    "answer": 1,
+    "solution": "A scraper is a versatile, self-loading machine capable of excavating, hauling, dumping, and spreading earth efficiently across long haul distances."
+  },
+  {
+    "q": "An equipment costs Rs. 25,000 to purchase now and will be used continuously for 8 years, after which its salvage value is estimated to be Rs. 1,600. Using the standard straight-line method of depreciation, what is the residual book value of this asset at the beginning of the 6th year of its use?",
+    "options": ["Rs. 6,250", "Rs. 9,375", "Rs. 10,375", "Rs. 7,450"],
+    "answer": 2,
+    "solution": "1. Total depreciable value = 25,000 - 1,600 = Rs. 23,400.\n2. Annual depreciation = 23,400 / 8 = Rs. 2,925.\n3. 'Beginning of 6th year' means 5 years of depreciation have passed.\n4. Book value = 25,000 - (5 × 2,925) = 25,000 - 14,625 = Rs. 10,375."
+  },
+  {
+    "q": "Which specific roller type achieves soil compaction through a combination of dynamic impact pulses and dead-weight pressure, making it ideal for deep granular soil strata?",
+    "options": ["Sheep Foot Roller", "Pneumatic Roller", "Vibratory Roller", "Smooth Drum Roller"],
+    "answer": 2,
+    "solution": "Vibratory rollers combine high-frequency impacts with pressure to rapidly rearrange and compact coarse, cohesionless soils like sands and gravels at depth."
+  },
+  {
+    "q": "Match the following Earth Excavating and Moving Equipment types in List-I with their primary operational performance characteristics in List-II:\nList-I:\nA. Power shovel\nB. Dragline\nC. Backhoe\nD. Clamshell\n\nList-II:\n1. Can excavate vertically below or above its track level\n2. Can effectively excavate underwater or loose materials from a distance\n3. Has excellent depth and digging control because of a rigid dipper stick assembly\n4. Operates best while standing on firm ground where the bucket is pulled towards the machine",
+    "options": ["A-3, B-2, C-4, D-1", "A-3, B-2, C-1, D-4", "A-2, B-3, C-1, D-4", "A-2, B-3, C-4, D-1"],
+    "answer": 0,
+    "solution": "The operational features match as follows:\n- Power shovel incorporates a rigid dipper stick for upward vertical face cutting (A-3).\n- Dragline drops a bucket via cable lines to excavate deep or underwater materials from a distance (B-2).\n- Backhoe pulls a bucket towards the machine, digging efficiently below its track level (C-4).\n- Clamshell drops vertically to grab loose materials from deep shafts or pits (D-1)."
+  },
+  {
+    "q": "Match the following specific Soil Compactor options in List-I with the soil profiles in List-II for which they are best suited:\nList-I:\nA. Sheep foot compactor\nB. Steel tandem compactor with 2 or 3 axles\nC. Steel drum roller\nD. Pneumatic roller with larger tires\n\nList-II:\n1. Granular or granular plastic soils\n2. Sandy silts, sandy clays, gravelly sand and clays with few fines\n3. Highly cohesive clay and slit clay with clay binder\n4. Non-plastic sandy silts and most granular materials with some clay binder",
+    "options": ["A-3, B-1, C-4, D-2", "A-2, B-4, C-1, D-3", "A-3, B-4, C-1, D-2", "A-2, B-1, C-4, D-3"],
+    "answer": 0,
+    "solution": "The standard matching guidelines are:\n- Sheep foot compactor relies on kneading pressure, perfect for heavy clays (A-3).\n- Steel tandem compactors are ideal for smoothing granular subgrades or asphalt layers (B-1).\n- Steel drum rollers compress coarse granular soils mixed with binders (C-4).\n- Pneumatic-tired rollers apply deep pressure suited for silts and gravelly sands (D-2)."
+  },
+  {
+    "q": "A smooth-wheeled roller features an effective drum compaction width of 1.5 m and moves at an average speed of 1.5 km/hr. If six continuous passes are specified to achieve full effectiveness on a soil layer, calculate the net compacted area output rate per hour:",
+    "options": ["13.5 m²/hr", "37.5 m²/hr", "135 m²/hr", "375 m²/hr"],
+    "answer": 3,
+    "solution": "1. Area covered per hour without considering passes = 1.5 m × (1.5 × 1,000 m/hr) = 2,250 m²/hr.\n2. Divided by 6 required passes for a single complete layer: 2,250 / 6 = 375 m²/hr."
+  },
+  {
+    "q": "A specialized masonry crew consisting of two carpenters and one helper can assemble 10 m² of a complex slab formwork in 8 hours. The hourly labor wage rate of a carpenter is Rs. 85.00 and for a helper is Rs. 69.50. What is the average hourly labor rate per single worker of this crew?",
+    "options": ["Rs. 90", "Rs. 80", "Rs. 70", "Rs. 60"],
+    "answer": 1,
+    "solution": "1. Total hourly crew cost = (2 × 85.00) + 69.50 = 170 + 69.50 = Rs. 239.50.\n2. Total workers = 3.\n3. Average hourly rate = 239.50 / 3 = Rs. 79.83, which rounds cleanly to Rs. 80."
+  },
+  {
+    "q": "The core operational component of a sheep foot roller that allows it to compact heavy clays from the bottom of the soil layer upward is its projecting rows of:",
+    "options": ["Pneumatic tires", "Vibratory plates", "Circular steel tamping lugs", "Smooth cutting blades"],
+    "answer": 2,
+    "solution": "Sheep foot rollers have steel studs or 'lugs' that penetrate the loose layer, applying high kneading pressure to compact clay soils from the bottom up."
+  },
+  {
+    "q": "A cantilever steel beam of 3 m span carries a uniformly distributed load of 20 kN/m inclusive of self-weight. The beam comprises an ISLB 200 section having a flange width of 100 mm, a flange thickness of 7.3 mm, a web thickness of 5.4 mm, I_xx = 1696.6 cm⁴, and I_yy = 115.4 cm⁴. The maximum bending and shear stresses in the beam are respectively:",
+    "options": [
+      "530.47 N/mm² and 55.55 N/mm²",
+      "3899.48 N/mm² and 82.19 N/mm²",
+      "132.62 N/mm² and 27.78 N/mm²",
+      "1949.74 N/mm² and 41.10 N/mm²"
+    ],
+    "answer": 0,
+    "solution": "1. Max Bending Moment M = wL²/2 = (20 * 3²) / 2 = 90 kN·m = 90 × 10⁶ N·mm.\n2. Max Bending Stress σ = M * y / I_xx = (90 × 10⁶ * 100) / (1696.6 × 10⁴) = 530.47 N/mm².\n3. Max Shear Force V = wL = 20 * 3 = 60 kN = 60 × 10³ N.\n4. Average Shear Stress in web τ = V / (h * t_w) = (60 × 10³) / (200 * 5.4) = 55.55 N/mm²."
+  },
+  {
+    "q": "For a structural steel I-beam, the plastic shape factor is 1.12 and the conventional factor of safety in bending is 1.5. If the allowable working stress is increased by 20% to account for transient wind and earthquake load combinations, the corresponding plastic load factor is:",
+    "options": ["1.10", "1.25", "1.35", "1.40"],
+    "answer": 3,
+    "solution": "1. Base Load Factor = Shape Factor × Factor of Safety.\n2. Modified Factor of Safety due to 20% stress increase = 1.5 / 1.20 = 1.25.\n3. Modified Load Factor = 1.12 × 1.25 = 1.40."
+  },
+  {
+    "q": "A compound column has been fabricated with 4 angles of ISA 50 × 50 × 6 placed at the four corners of a square tracking 300 mm × 300 mm. The radius of gyration of an individual angle component is 10 mm. If the total fabricated compound column has an overall slenderness ratio of 40, what is the maximum permissible distance between the lacing bar attachments along the column to avoid local component buckling?",
+    "options": ["500 mm", "400 mm", "300 mm", "280 mm"],
+    "answer": 3,
+    "solution": "1. Code limits state local slenderness (L_c / r_min) must not exceed 50 or 0.7 times the maximum overall slenderness ratio.\n2. Maximum local slenderness allowed = 0.7 × 40 = 28.\n3. With r_min = 10 mm, max spacing L_c = 28 × 10 mm = 280 mm."
+  },
+  {
+    "q": "Two ISMC 400 channels are placed back-to-back at a clear spacing of 26 cm to function as a compound compression column. The column carries a total axial factored design load of 100 tonnes. The single or double lacing system provided to connect these channels must be explicitly designed to resist an internal transverse shear force of:",
+    "options": ["16 tonnes", "12 tonnes", "8 tonnes", "2.5 tonnes"],
+    "answer": 3,
+    "solution": "1. Design specifications mandate that a column's lacing system must resist a transverse shear force equal to 2.5% of the total axial compressive load.\n2. Transverse Shear Capacity = 2.5% of 100 tonnes = 2.5 tonnes."
+  },
+  {
+    "q": "In a built-up structural column connected by flat lacing bars, the minimum width of the lacing bars provided when using standard 20 mm nominal diameter structural rivets or bolts is:",
+    "options": ["65 mm", "60 mm", "55 mm", "50 mm"],
+    "answer": 1,
+    "solution": "1. Design standards state the minimum width of a flat lacing bar must be 3 times the nominal diameter of the connecting fastener.\n2. Minimum width = 3 × 20 mm = 60 mm."
+  },
+  {
+    "q": "An electric distribution line pole 5 m high is permanently fixed into a concrete block foundation at its bottom. It carries a transmission wire at its top end and is completely free to move sideways or sway. The effective design length of this compression pole is:",
+    "options": ["3.25 m", "4.0 m", "5.0 m", "10.0 m"],
+    "answer": 3,
+    "solution": "1. The configuration represents a cantilever column: fixed at base, free at top.\n2. Theoretical effective length factor is 2.0L.\n3. Effective length = 2.0 × 5 m = 10.0 m."
+  },
+  {
+    "q": "To account for additional shear deformations and distortions occurring across the cross-sections of battened built-up columns, standard code provisions mandate that the maximum actual slenderness ratio of the column must be multiplied by a modification factor of:",
+    "options": ["1.10", "2.50", "1.25", "0.90"],
+    "answer": 0,
+    "solution": "Battened built-up members are more flexible in shear. To compensate, design criteria specify that the effective slenderness ratio of a battened column must be taken as 1.10 times its maximum actual slenderness ratio."
+  },
+  {
+    "q": "Which type of buckling failure uniquely governs a structural steel column when it twists globally along its longitudinal axis rather than bending laterally?",
+    "options": ["Flexural Buckling", "Torsional Buckling", "Local Buckling", "Distortional Buckling"],
+    "answer": 1,
+    "solution": "Torsional buckling occurs when a column fails by twisting about its longitudinal axis, commonly seen in cruciform or open asymmetric sections."
+  },
+  {
+    "q": "A symmetric, standard welded plate girder features a spliced web connection along its span. At the critical splice cross-section, the total applied bending moment is M. If the girder is configured with a top flange, a web plate, and a bottom flange plate of identical cross-sectional area, what exact share of the bending moment must be taken by the web splice plates?",
+    "options": ["M", "M/3", "M/7", "M/13"],
+    "answer": 2,
+    "solution": "Using the linear flexural stress distribution criteria where moment carried is proportional to the component's moment of inertia, for a section where A_web = A_flange, I_web is 1/7 of the total section inertia. Thus, the web splice takes a share equal to M/7."
+  },
+  {
+    "q": "In a symmetric built-up plate girder with a cross-section formed as an I-shape of depth D, the flange plates have a total cross-sectional area of A_f each, and the web plate has a cross-sectional area of A_w. What is the provisional plastic section modulus (Z_p) of this section for ultimate limit state design calculations?",
+    "options": ["(A_f + A_w/4)D", "(A_f + A_w/6)D", "(A_f + A_w/8)D", "(A_f + A_w/12)D"],
+    "answer": 0,
+    "solution": "Z_p is the first moment of area about the plastic neutral axis. For an I-section: Z_p = 2 * [A_f * (D/2)] + 2 * [(A_w / 2) * (D / 4)] = (A_f + A_w/4)D."
+  },
+  {
+    "q": "The primary structural reason for providing intermediate vertical stiffeners in a deep fabricated steel plate girder connection framework is to prevent:",
+    "options": ["Flange local wrinkling", "Web diagonal compression buckling", "Torsional twisting failure", "Lateral-torsional buckling"],
+    "answer": 1,
+    "solution": "Intermediate vertical stiffeners are designed to safeguard the deep, thin web plate against out-of-plane diagonal compression buckling caused by high shear forces."
+  },
+  {
+    "q": "A structural member primarily subjected to out-of-plane bending and torsion that supports a heavy overhead factory crane traveling along its upper flange is known as a:",
+    "options": ["Purlin", "Lintel", "Gantry Girder", "Sag Rod"],
+    "answer": 2,
+    "solution": "A gantry girder is a specialized crane-supporting structural beam subjected to dynamic vertical loads, lateral surging forces, and longitudinal braking forces."
+  },
+  {
+    "q": "In a web splice joint of a plate girder subjected to combined shear and bending actions, which of the bolts in the multi-row bolt pattern shown in the diagram experiences the maximum critical stress?",
+    "options": ["Bolt - 1 (Top-outer corner bolt)", "Bolt - 2 (Inner bolt close to neutral axis)", "Bolt - 3 (Bottom-inner bolt)", "Bolt - 4 (Symmetric center bolt)"],
+    "answer": 0,
+    "solution": "The rotational stress due to bending increases linearly with the radial distance from the center of gravity of the bolt group. Therefore, the top-outer corner bolts (Bolt - 1), sitting at the maximum radius, carry the highest combined stress."
+  },
+  {
+    "q": "In a structural steel plate girder designed with a vertically stiffened web plate, the size of the horizontal fillet welds connecting the web plate to the top and bottom flange plates must be designed to safely resist which of the following forces?",
+    "options": ["The bending stresses in the flanges", "The vertical shear force at the section", "The horizontal shear forces between the flanges and the web plate", "The localized forces causing web buckling"],
+    "answer": 2,
+    "solution": "The connection between the flange and the web must resist the longitudinal horizontal shear flow (V·Q / I) that develops due to changes in bending moment along the span length."
+  },
+  {
+    "q": "A crane with two wheels per side has a capacity of 50 kN. The weight of the crane bridge is 100 kN, the weight of the trolley is 10 kN, and the crane span is 12 m. If the maximum hook clearance allows the trolley to approach within 1.0 m of the side gantry rail, what is the maximum static wheel load experienced by the gantry girder?",
+    "options": ["50.0 kN", "52.5 kN", "55.0 kN", "60.0 kN"],
+    "answer": 1,
+    "solution": "1. Moving load = trolley + capacity = 10 + 50 = 60 kN.\n2. Max reaction on gantry due to moving load = 60 × (12 - 1) / 12 = 55 kN.\n3. Crane bridge dead load contribution = 100 / 2 = 50 kN.\n4. Max load on one side rail = 55 + 50 = 105 kN.\n5. Shared across 2 wheels per side: Max static wheel load = 105 / 2 = 52.5 kN."
+  },
+  {
+    "q": "In a plate girder subjected to a maximum bending moment of 200 kN·m, the width and thickness of each flange plate are specified as 200 mm and 10 mm respectively. Assuming that the entire bending moment is resisted solely by the flanges, what is the required economical depth of the girder? [Take f_y = 250 MPa]",
+    "options": ["800 mm", "400 mm", "500 mm", "700 mm"],
+    "answer": 1,
+    "solution": "1. Area of one flange A_f = 200 × 10 = 2,000 mm².\n2. Assuming flanges carry all moment: M = A_f × f_y × d.\n3. 200 × 10⁶ N·mm = 2,000 × 250 × d => 200 × 10⁶ = 500,000 × d.\n4. d = 400 mm."
+  },
+  {
+    "q": "A structural component placed horizontally over roof trusses to carry the external roof sheet covering and transfer the gravity and wind loads into the truss nodes is called a:",
+    "options": ["Purlin", "Rafter", "Gusset Plate", "Batten Plate"],
+    "answer": 0,
+    "solution": "Purlins are structural beams positioned horizontally along the roof slope to support roof sheet frames and transfer incoming loads to the main trusses."
+  },
+  {
+    "q": "A structural tie bar with a cross-section of 50 mm × 8 mm is designed to carry an axial tensile working load of 80 kN. A small specimen of the same quality steel with a cross-sectional area of 250 mm² is tested to failure in a laboratory and carries a maximum ultimate load of 125 kN. What is the actual factor of safety incorporated into this tie bar design?",
+    "options": ["3.0", "2.5", "2.0", "1.5"],
+    "answer": 1,
+    "solution": "1. Ultimate strength f_u = 125,000 N / 250 mm² = 500 N/mm².\n2. Actual gross area of tie bar = 50 × 8 = 400 mm².\n3. Working stress σ = 80,000 N / 400 mm² = 200 N/mm².\n4. Factor of Safety = f_u / σ = 500 / 200 = 2.5."
+  },
+  {
+    "q": "A steel channel section is placed in an inclined position at an angle of 30° to the horizontal to serve as a structural purlin. If the channel is subjected to a vertical gravitational loading that produces a total bending moment 'M' in the vertical plane of loading, what is the resulting component of the bending moment acting about the major principal axis (M_xx) of the section?",
+    "options": ["(√3 / 2) M", "1/2 M", "(1 / √2) M", "2 M"],
+    "answer": 0,
+    "solution": "1. Resolving the vertical bending moment M into vectors parallel and perpendicular to the principal inclination axes of the channel purlin:\n2. The component about the major principal axis XX is M_xx = M cos(30°) = (√3 / 2) M."
+  },
+  {
+    "q": "At a specific location of a structural plate girder with a web plate size of 1000 mm × 10 mm, a pair of symmetric bearing stiffeners of size 100 mm × 5 mm is welded to the web. According to standard specifications, the effective area of this bearing assembly as a compression column is determined by including a central web strip of 20 times the web thickness. What is the total effective area of this assembly?",
+    "options": ["1000 mm²", "2000 mm²", "3000 mm²", "5000 mm²"],
+    "answer": 2,
+    "solution": "1. Area of the stiffeners = 2 × (100 × 5) = 1,000 mm².\n2. Included effective web strip area = 20 × t_w × t_w = 20 × 10 × 10 = 2,000 mm².\n3. Total effective column area = 1,000 + 2,000 = 3,000 mm²."
   }
-            ]
-        };
+]        };
 
         const testNumber = getTestNumber();
         const questions = allTests[testNumber] || allTests["4"]; 
