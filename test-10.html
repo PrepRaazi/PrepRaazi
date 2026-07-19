@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 4 - Weekly Mock Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        .question { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #ddd; }
+        .options label { display: block; }
+        .submit-btn { margin-top: 20px; padding: 10px; background: blue; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 20px; padding: 10px; border: 1px solid black; display: none; }
+        .solution { margin-top: 10px; padding: 10px; background: #f8f8f8; border-left: 4px solid green; display: none; }
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="testTitle">Test 4</h2>
+        <form id="gateTestForm">
+            <div id="questionsContainer"></div>
+            <button type="button" class="submit-btn" onclick="calculateScore()">Submit</button>
+        </form>
+        <div class="result" id="resultBox"></div>
+    </div>
+
+    <script>
+        function getTestNumber() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("test") || "4"; 
+        }
+
+        const allTests = {
+            "4": [
+  {
+    "q": "A bar chart of four activities indicates their scheduled start and finish 'end-of-day' values along with their daily resource requirements as follows: Activity 1 (Days 0 to 16, 8/day), Activity 2 (Days 11 to 22, 6/day), Activity 3 (Days 19 to 28, 7/day), and Activity 4 (Days 20 to 24, 9/day). What will be the maximum and the minimum resource need on any of the days?",
+    "options": ["22, 6", "21, 6", "21, 8", "20, 8"],
+    "answer": 0,
+    "solution": "By superimposing the schedules: From day 0-11, load = 8. From day 11-16, load = 8 + 6 = 14. From day 16-19, load = 6. From day 19-20, load = 6 + 7 = 13. From day 20-22, load = 6 + 7 + 9 = 22. From day 22-24, load = 7 + 9 = 16. From day 24-28, load = 7. Thus, the maximum daily demand is 22 and the minimum is 6."
+  },
+  {
+    "q": "The time estimates obtained from four contractors P, Q, R, and S for executing a particular job are given below in the format (Optimistic time t_o, Most likely time t_m, Pessimistic time t_p). Which one of these contractors is more certain about completing the job in time?\nContractor P: (5, 10, 13)\nContractor Q: (6, 9, 12)\nContractor R: (5, 10, 14)\nContractor S: (4, 10, 13)",
+    "options": ["P", "Q", "R", "S"],
+    "answer": 1,
+    "solution": "Certainty of completion is inversely proportional to the standard deviation or variance of the time distribution. Standard deviation σ is calculated as (t_p - t_o) / 6. For P: σ = 8/6 = 1.33; For Q: σ = 6/6 = 1.00; For R: σ = 9/6 = 1.50; For S: σ = 9/6 = 1.50. Since Contractor Q has the minimum standard deviation, they provide the highest certainty."
+  },
+  {
+    "q": "There are four consecutive activities in a simple linear network, each with a mean duration of T and each with 'k' as the standard deviation of its duration. The overall project duration through these activities is likely to be in the range of:",
+    "options": ["4T ± k", "4T ± 2k", "4T ± 4k", "4T ± 6k"],
+    "answer": 1,
+    "solution": "According to the central limit theorem for consecutive activities, the total expected mean duration is the sum of individual means: T + T + T + T = 4T. The total project variance is the sum of individual variances: k² + k² + k² + k² = 4k². The project standard deviation is therefore √(4k²) = 2k. Thus, the range of project duration is 4T ± 2k."
+  },
+  {
+    "q": "An activity along the critical path of a network has an optimistic time of 4 days, a most likely time of 7 days, and a pessimistic time of 16 days. What is its expected duration?",
+    "options": ["7 days", "8 days", "9 days", "10 days"],
+    "answer": 1,
+    "solution": "The expected time (t_e) in PERT is computed using the weighted formula: t_e = (t_o + 4*t_m + t_p) / 6. Substituting the values: t_e = (4 + 4*7 + 16) / 6 = (4 + 28 + 16) / 6 = 48 / 6 = 8 days."
+  },
+  {
+    "q": "In project sampling and quality control inspection, if a contractor wishes to reduce the error limit of an estimated mean asset thickness by half, the required sample size must be:",
+    "options": ["Halved", "Doubled", "Tripled", "Quadrupled"],
+    "answer": 3,
+    "solution": "The standard sample size formula is n = (Z * σ / E)², where E is the allowable error limit. Since n is inversely proportional to the square of the error limit (n ∝ 1/E²), reducing the error limit by half (E/2) requires the sample size to increase by a factor of 2², which means it must be quadrupled."
+  },
+  {
+    "q": "Which of the following is considered a primary major drawback of utilizing conventional Gantt/Bar charts in complex engineering project management?",
+    "options": ["They are too difficult to read or construct mechanically", "They cannot show the resource loading details over progress increments", "They do not explicitly depict the hidden dependencies and interrelationships between activities", "Project durations cannot be estimated graphically"],
+    "answer": 2,
+    "solution": "While bar charts are simple, intuitive, and visually scannable, their absolute primary limitation is their inability to systematically define or explicitly depict dependencies, paths, and interrelationships between various parallel activities."
+  },
+  {
+    "q": "Consider the following statements regarding a linked bar chart:\n1. Any activity can be shown split into several sub-parts if desirable.\n2. Inter-linkages between WBS groups can be depicted.\n3. Mandatory pauses between activities are always demonstrated on the chart.\nWhich of these statements is/are correct?",
+    "options": ["1, 2 and 3", "3 only", "2 only", "1 only"],
+    "answer": 2,
+    "solution": "A linked bar chart primarily introduces activity interdependencies to a standard bar chart layout, which directly allows it to display the relationships/inter-linkages between distinct Work Breakdown Structure (WBS) groups or items."
+  },
+  {
+    "q": "Which of the following parameters/factors are characteristic of the Programme Evaluation Review Technique (PERT)?\n1. Projects are of the non-repetitive type.\n2. Time required need not be known.\n3. Time required is known precisely.\n4. Events have been established for planning.\n5. Emphasis is given to activities of the project.",
+    "options": ["1, 2 and 4", "3, 4 and 5", "1, 3 and 4", "1, 2 and 5"],
+    "answer": 0,
+    "solution": "PERT is an event-oriented probabilistic approach preferred for non-repetitive configurations (such as R&D projects) where individual activity durations carry high uncertainty (hence, precise durations are not known beforehand), and structural control maps between defined milestones/events."
+  },
+  {
+    "q": "Match the items in List-I (Diagram Based Nomenclature) with List-II (Information Capability):\nList-I:\nA. Work-breakdown structure\nB. Bar chart\nC. Linked bar chart\nD. Time computations on network\n\nList-II:\n1. Target dates for interface events can be stipulated\n2. Can be hierarchical\n3. Can include information on cost distribution over time\n4. Best suited for monitoring on network including that for costs",
+    "options": ["A-4, B-3, C-2, D-1", "A-2, B-1, C-4, D-3", "A-4, B-1, C-2, D-3", "A-2, B-3, C-4, D-1"],
+    "answer": 3,
+    "solution": "A Work-breakdown structure (WBS) breaks a project down into a hierarchical framework (A-2). A traditional bar chart is highly effective at displaying cost distributions or resource allocation linearly over time (B-3). A linked bar chart adds critical progress milestones and dependency ties over the network (C-4), and explicit network time computations yield target milestones or dates for interface events (D-1)."
+  },
+  {
+    "q": "Consider the following statements regarding the Work Breakdown Structure (WBS):\n1. It is a graphical representation of the entire program.\n2. The Top-Down approach to planning is adopted.\n3. The Down-Top approach to planning is adopted.\n4. It is suitable for complex projects.\nWhich of the statements given above are correct?",
+    "options": ["1 only", "2 and 4", "3 and 4", "4 only"],
+    "answer": 1,
+    "solution": "A Work Breakdown Structure organizes and defines the total scope of a complex project by breaking down tasks using a logical top-down planning approach, progressively splitting multi-tiered deliverables into smaller, manageable components."
+  },
+  {
+    "q": "In a single-path PERT network timeline, the optimistic time is 3 days, the most likely time is 6 days, and the pessimistic time is 9 days. What is the standard deviation of this activity's duration?",
+    "options": ["0.5 days", "1.0 day", "1.5 days", "2.0 days"],
+    "answer": 1,
+    "solution": "In PERT analysis, the standard deviation (σ) of an activity time distribution is computed using the formula: σ = (t_p - t_o) / 6. Substituting the given values: σ = (9 - 3) / 6 = 6 / 6 = 1.0 day."
+  },
+  {
+    "q": "By definition, the critical path in any standard CPM/PERT project network diagram represents:",
+    "options": ["The path containing the shortest sequence of events", "The longest path through the network indicating the minimum time required to complete the project", "The path that consumes the minimum amount of overall direct project costs", "The path consisting entirely of dummy activities"],
+    "answer": 1,
+    "solution": "The critical path is defined as the longest continuous sequential path from the start node to the end node of a project network. It determines the minimum total calendar time required to complete the entire project."
+  },
+  {
+    "q": "A continuous linear pipeline project is split into six identical, independent sequential activities, each having a, m, and b probabilistic durations that result in an overall standard deviation of X₁ days for the full project. As an alternative setup, a project planner decides to club these activities pairwise into three larger non-modified tasks (1st+2nd, 3rd+4th, 5th+6th). If the standard deviation calculated for this new clubbed network configuration is X₂, what will be the value of the ratio X₂ / X₁?",
+    "options": ["2/3", "7/6", "5/6", "1"],
+    "answer": 3,
+    "solution": "Let the variance of each individual small activity be σ². For the original network of six independent activities, the total project variance is the sum of their variances: Var(Original) = 6σ². Thus, the standard deviation is X₁ = √(6σ²).\n\nWhen the activities are clubbed pairwise into three larger tasks, the project is still comprised of the exact same physical activities operating sequentially. The variance of the three new macro-tasks will be 2σ², 2σ², and 2σ² respectively. The total project variance remains: Var(Modified) = 2σ² + 2σ² + 2σ² = 6σ². Therefore, X₂ = √(6σ²). The ratio X₂ / X₁ = 1."
+  },
+  {
+    "q": "PERT calculations for a project establish an expected critical path completion length of 40 weeks with a total project standard deviation of 4 weeks. What is the scheduled time required to complete this project with a 50% probability factor?",
+    "options": ["36 weeks", "40 weeks", "44 weeks", "48 weeks"],
+    "answer": 1,
+    "solution": "The probability distribution of project completion in PERT is assumed to be normal. A 50% completion probability corresponds to a standard normal deviate Z = 0. Since Z = (T_s - T_e) / σ, when Z = 0, the target scheduled time (T_s) is exactly equal to the expected mean project length (T_e), which is 40 weeks."
+  },
+  {
+    "q": "Three project tasks F, G, and H are scheduled to be performed sequentially with individual durations of 15, 21, and 27 days, respectively. To optimize the schedule, a ladder network design is adopted where each task is divided into 3 equal sequential sub-segments. Assuming typical laddering dependencies are established across segments (e.g., segment 1 of an activity can trigger segment 1 of the following activity), what is the total net reduction in project duration?",
+    "options": ["15 days", "18 days", "21 days", "24 days"],
+    "answer": 3,
+    "solution": "1. Original sequential duration = 15 + 21 + 27 = 63 days.\n\n2. In a ladder network where activities are broken into 3 equal sub-parts:\n• Each sub-part of F = 15 / 3 = 5 days (F₁, F₂, F₃)\n• Each sub-part of G = 21 / 3 = 7 days (G₁, G₂, G₃)\n• Each sub-part of H = 27 / 3 = 9 days (H₁, H₂, H₃)\n\n3. The critical path through a standard ladder network configuration is dictated by: the first segment of leading tasks + all segments of the longest task + the last segment of trailing tasks.\n• Lead-in time to start H = F₁ + G₁ = 5 + 7 = 12 days.\n• Total duration of the longest task (H) = 9 + 9 + 9 = 27 days.\n• Total minimum laddered duration = Lead-in + Full execution of H = 12 + 27 = 39 days.\n\n4. Net saving in total project time = Original Duration - Laddered Duration = 63 - 39 = 24 days."
+  },
+  {
+    "q": "If the Total Float of an activity is computed as 10 days and its Free Float is evaluated as 6 days, what is the value of its Interference Float?",
+    "options": ["2 days", "4 days", "10 days", "16 days"],
+    "answer": 1,
+    "solution": "Interference Float represents the portion of the total float that blocks or interferes with the early start milestones of successor activities. It is mathematically defined as the difference between Total Float and Free Float: Interference Float = Total Float - Free Float = 10 - 6 = 4 days."
+  },
+  {
+    "q": "Consider the following sequential project activity profile:\n• Activity A: Immediate Predecessor = None, Duration = 10 days\n• Activity B: Immediate Predecessor = None, Duration = 9 days\n• Activity C: Immediate Predecessor = A, Duration = 9 days\n• Activity D: Immediate Predecessor = A, Duration = 8 days\n• Activity E: Immediate Predecessor = B, Duration = 7 days\n• Activity F: Immediate Predecessor = B, Duration = 11 days\n• Activity G: Immediate Predecessor = D, E, Duration = 5 days\nDetermine the total project duration dictated by the critical path.",
+    "options": ["25 days", "23 days", "21 days", "19 days"],
+    "answer": 1,
+    "solution": "Trace all sequential network paths to find the longest path (critical path):\n• Path 1: A → C = 10 + 9 = 19 days.\n• Path 2: A → D → G = 10 + 8 + 5 = 23 days.\n• Path 3: B → E → G = 9 + 7 + 5 = 21 days.\n• Path 4: B → F = 9 + 11 = 20 days.\nThe longest path is Path 2 (A-D-G), which yields a total project duration of 23 days."
+  }
+            ]
+        };
+
+        const testNumber = getTestNumber();
+        const questions = allTests[testNumber] || allTests["4"]; 
+
+        document.getElementById("testTitle").innerText = `Test ${testNumber}`;
+
+        const questionsContainer = document.getElementById("questionsContainer");
+        questions.forEach((item, index) => {
+            let questionHTML = `<div class='question' id='q${index}'>
+                <p><strong>Q${index + 1}:</strong> ${item.q}</p>
+                <div class='options'>`;
+            item.options.forEach((option, optIndex) => {
+                questionHTML += `<label><input type='radio' name='q${index}' value='${optIndex}'> ${option}</label>`;
+            });
+            questionHTML += `</div>
+                <div class="solution" id="sol${index}">
+                    <p><strong>Correct Answer:</strong> <span class="correct">${item.options[item.answer]}</span></p>
+                    <p><strong>Solution:</strong> ${item.solution}</p>
+                </div>
+            </div>`;
+            questionsContainer.innerHTML += questionHTML;
+        });
+
+        function calculateScore() {
+            let score = 0;
+            let attempted = 0;
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            questions.forEach((item, index) => {
+                let selected = document.querySelector(`input[name='q${index}']:checked`);
+                if (!selected) {
+                    unattempted++;
+                } else {
+                    attempted++;
+                    if (parseInt(selected.value) === item.answer) {
+                        correct++;
+                        score += 2;
+                    } else {
+                        incorrect++;
+                        score -= 2 / 3;
+                    }
+                }
+                document.getElementById(`sol${index}`).style.display = "block"; 
+            });
+
+            document.getElementById("resultBox").innerHTML = `
+                <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
+                <p><strong>Attempted:</strong> ${attempted}</p>
+                <p><strong>Correct:</strong> ${correct}</p>
+                <p><strong>Incorrect:</strong> ${incorrect}</p>
+                <p><strong>Unattempted:</strong> ${unattempted}</p>
+            `;
+            document.getElementById("resultBox").style.display = "block";
+
+            sendReportCardToInstructor(score.toFixed(2), attempted, correct, incorrect);
+        }
+
+        function sendReportCardToInstructor(finalScore, att, corr, incorr) {
+            let candidateName = prompt("Please enter your name/roll number to record your score card:") || "Anonymous Student";
+            let testTitleName = document.getElementById("testTitle").innerText;
+
+            const REPORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScVZINgA2CA0bMlA6Q6zrceaJ6MrkbQAgSHyckCU3tcnm5XSw/formResponse";
+
+            let formData = new FormData();
+            formData.append("entry.1055773345", candidateName);  
+            formData.append("entry.1376015284", testTitleName);   
+            formData.append("entry.2081767486", finalScore);      
+            formData.append("entry.1028667235", `Attempted: ${att} | Correct: ${corr} | Incorrect: ${incorr}`);
+
+            fetch(REPORT_FORM_URL, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                alert("Your report card has been successfully submitted to the instructor dashboard!");
+            }).catch(err => console.error("Data submission log error: ", err));
+        }
+    </script>
+    <script>
+(function() {
+    const styles = `
+        body { padding-top: 70px !important; }
+        .test-header-bar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+            background-color: #003366; color: white; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 0 40px; box-sizing: border-box; z-index: 9999;
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.1); font-family: Arial, sans-serif;
+        }
+        .test-header-bar h2 { margin: 0; font-size: 1.3rem; }
+        .timer-display {
+            background-color: #ffcc00; color: #000; padding: 8px 16px;
+            font-weight: bold; border-radius: 5px; font-size: 1.1rem;
+        }
+    `;
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+
+    const currentTestNum = (typeof getTestNumber === "function") ? getTestNumber() : "1";
+    const headerBar = document.createElement("div");
+    headerBar.className = "test-header-bar";
+    headerBar.innerHTML = `
+        <h2>ESE Test Arena — Test ${currentTestNum}</h2>
+        <div class="timer-display" id="dynamicTimerBox">Time Remaining: --:--</div>
+    `;
+    document.body.insertBefore(headerBar, document.body.firstChild);
+
+    let timerInterval;
+    let isExamSubmitted = false;
+    let totalExamDurationSeconds = 0;
+    let timeRemainingSeconds = 0;
+
+    function initTimer() {
+        if (typeof questions === "undefined" || !Array.isArray(questions)) {
+            console.error("PrepRaazi Engine Error: 'questions' array data block not located.");
+            return;
+        }
+
+        const durationInMinutes = questions.length + 10;
+        totalExamDurationSeconds = durationInMinutes * 60;
+        timeRemainingSeconds = totalExamDurationSeconds;
+        
+        const timerBox = document.getElementById("dynamicTimerBox");
+
+        timerInterval = setInterval(() => {
+            if (timeRemainingSeconds <= 0) {
+                clearInterval(timerInterval);
+                timerBox.innerText = "Time Expired!";
+                timerBox.style.backgroundColor = "#dc3545";
+                timerBox.style.color = "white";
+                processExamResults(true); 
+            } else {
+                timeRemainingSeconds--;
+                let mins = Math.floor(timeRemainingSeconds / 60);
+                let secs = timeRemainingSeconds % 60;
+                timerBox.innerText = `Time Remaining: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTimer);
+    } else {
+        initTimer();
+    }
+
+    window.calculateScore = function() {
+        if (isExamSubmitted) return;
+        processExamResults(false);
+    };
+
+    function processExamResults(isTimeOutTrigger) {
+        if (isExamSubmitted) return;
+        isExamSubmitted = true;
+        clearInterval(timerInterval);
+
+        let elapsedSeconds = totalExamDurationSeconds - timeRemainingSeconds;
+        let takenMins = Math.floor(elapsedSeconds / 60);
+        let takenSecs = elapsedSeconds % 60;
+        let timeTakenString = `${takenMins}m ${takenSecs}s`;
+
+        const timerBox = document.getElementById("dynamicTimerBox");
+        if (timerBox && !isTimeOutTrigger) {
+            timerBox.innerText = "Exam Completed";
+            timerBox.style.backgroundColor = "#28a745";
+            timerBox.style.color = "white";
+        }
+
+        document.querySelectorAll("input[type='radio']").forEach(i => i.disabled = true);
+        const submitBtn = document.querySelector(".submit-btn") || document.getElementById("mainSubmitBtn");
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.5";
+            submitBtn.style.cursor = "not-allowed";
+        }
+
+        let score = 0, attempted = 0, correct = 0, incorrect = 0, unattempted = 0;
+
+        questions.forEach((item, index) => {
+            let selected = document.querySelector(`input[name='q${index}']:checked`);
+            if (!selected) {
+                unattempted++;
+            } else {
+                attempted++;
+                if (parseInt(selected.value) === item.answer) {
+                    correct++;
+                    score += 2;
+                } else {
+                    incorrect++;
+                    score -= 2 / 3;
+                }
+            }
+            const solBox = document.getElementById(`sol${index}`);
+            if (solBox) solBox.style.display = "block"; 
+        });
+
+        const resultBox = document.getElementById("resultBox");
+        if (resultBox) {
+            resultBox.innerHTML = `
+                <h3 style="color:#003366; margin-top:0;">${isTimeOutTrigger ? '⏱️ Time up! Exam Auto-Submitted.' : '📊 Exam Evaluation Summary'}</h3>
+                <p><strong>Your Score:</strong> ${score.toFixed(2)}</p>
+                <p><strong>Time Taken:</strong> ${timeTakenString}</p>
+                <p><strong>Attempted:</strong> ${attempted}</p>
+                <p><strong>Correct:</strong> ${correct}</p>
+                <p><strong>Incorrect:</strong> ${incorrect}</p>
+                <p><strong>Unattempted:</strong> ${unattempted}</p>
+            `;
+            resultBox.style.display = "block";
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        let candidateName = prompt("Exam finished! Please enter your name/roll number to record your scorecard:") || "Anonymous Student";
+        let testTitleName = `Test ${currentTestNum}`;
+
+        const REPORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScVZINgA2CA0bMlA6Q6zrceaJ6MrkbQAgSHyckCU3tcnm5XSw/formResponse";
+
+        let formData = new FormData();
+        formData.append("entry.1055773345", candidateName);  
+        formData.append("entry.1376015284", testTitleName);   
+        formData.append("entry.2081767486", score.toFixed(2));      
+        formData.append("entry.1028667235", `Time Taken: ${timeTakenString} | Attempted: ${attempted} | Correct: ${correct} | Incorrect: ${incorr}`);
+
+        fetch(REPORT_FORM_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: formData
+        }).then(() => {
+            alert("Your report card has been successfully submitted to the instructor dashboard!");
+        }).catch(err => console.error("Data submission log error: ", err));
+    }
+})();
+</script>
+</body>
+</html>
